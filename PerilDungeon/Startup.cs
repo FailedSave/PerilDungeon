@@ -9,6 +9,7 @@ namespace PerilDungeon
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSingleton(typeof(IPartyProvider), typeof(PartyProvider));
+            services.AddSingleton(typeof(IEncounterProvider), typeof(EncounterProvider));
         }
 
         public void Configure(IComponentsApplicationBuilder app)

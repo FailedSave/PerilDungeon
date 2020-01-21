@@ -20,5 +20,24 @@ namespace PerilDungeon.Classes
         public List<string> Statuses { get; set; }
         public bool CanAct { get; set; }
 
+        public string Image
+        {
+            get
+            {
+                if (Statuses.Contains("Petrified"))
+                {
+                    return "assets/statue.jpg";
+                }
+                return "assets/" + Name.ToLower() + ".png";
+            }
+        }
+
+        public void AddStatus(string newStatus)
+        {
+            if (!Statuses.Contains(newStatus))
+            {
+                Statuses.Add(newStatus);
+            }
+        }
     }
 }

@@ -6,10 +6,8 @@ using PerilDungeon.Classes;
 
 namespace PerilDungeon.Data
 {
-    interface IPartyProvider
+    interface IEncounterProvider
     {
-        public List<Character> Party { get; }
-        event Action RefreshRequested;
-        void CallRequestRefresh();
+        public List<EncounterChoice> Encounters { get; set; }
     }
 }

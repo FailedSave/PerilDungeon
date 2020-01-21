@@ -1,0 +1,26 @@
+﻿@inject IEncounterProvider EncounterProvider
+@inject IPartyProvider PartyProvider
+
+<h3>Encounter</h3>
+
+@foreach (var encounter in EncounterProvider.Encounters)
+{
+    <button @onclick="()=>HaveEncounter(encounter)" class="btn btn-primary">@encounter.Text</button>
+}
+
+@code {
+    //TODO this should not have a party provider and shouldn't be here
+    private void HaveEncounter(EncounterChoice e)
+    {
+        Console.WriteLine("having an encounter");
+        if (e.Text == "Proceed Recklessly")
+        {
+            Random r = new Random();
+            int target = r.Next(0, 3);
+            Character targetChar = PartyProvider.Party[target];
+            Console.WriteLine("Target is: " + targetChar.Name);
+            targetChar.AddStatus("Petrified");
+            PartyProvider.CallRequestRefresh();
+        }
+    }
+}

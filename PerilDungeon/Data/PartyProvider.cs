@@ -13,7 +13,7 @@ namespace PerilDungeon.Data
         public PartyProvider()
         {
             _party = new List<Character>();
-            _party.Add(new Character("Loraine"));
+            _party.Add(new Character("You"));
             _party.Add(new Character("Johanna"));
             _party.Add(new Character("Cylenae"));
         }
@@ -26,6 +26,11 @@ namespace PerilDungeon.Data
             }
         }
 
+        public event Action RefreshRequested;
+        public void CallRequestRefresh()
+        {
+            RefreshRequested?.Invoke();
+        }
 
     }
 }

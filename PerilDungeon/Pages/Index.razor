@@ -13,6 +13,7 @@ Peril and, perhaps, riches await...
 {
 <CharacterDisplay Character="character"/>
 }
+<EncounterDisplay/>
 
 @code {
     private string name = "unknown";
@@ -22,5 +23,12 @@ Peril and, perhaps, riches await...
     {
         name = PartyProvider.Party[0].Name;
         Party = PartyProvider.Party;
+        PartyProvider.RefreshRequested += RefreshMe;
+    }
+
+
+    private void RefreshMe()
+    {
+        StateHasChanged();
     }
 }
