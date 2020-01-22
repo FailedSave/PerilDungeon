@@ -42,5 +42,10 @@ namespace PerilDungeon.Classes
                 Statuses.Add(newStatus);
             }
         }
+
+        public bool HasStatus (string status)
+        {
+            return Statuses.Contains(status);
+        }
     }
 }

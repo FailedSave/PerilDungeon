@@ -8,6 +8,7 @@ namespace PerilDungeon.Data
 {
     public class EncounterProvider : IEncounterProvider
     {
+        public string EncounterName { get { return "Searching the Dungeon"; } set { } }
         public List<EncounterChoice> Encounters {
             get
             {

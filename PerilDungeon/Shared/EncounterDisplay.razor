@@ -1,7 +1,8 @@
 ﻿@inject IEncounterProvider EncounterProvider
 @inject IPartyProvider PartyProvider
+@inject IMessageProvider MessageProvider
 
-<h3>Encounter</h3>
+<h4>@EncounterProvider.EncounterName</h4>
 
 @foreach (var encounter in EncounterProvider.Encounters)
 {
@@ -10,17 +11,48 @@
 
 @code {
     //TODO this should not have a party provider and shouldn't be here
+
+    private int petrifiedCharacters;
+    protected override void OnInitialized()
+    {
+        petrifiedCharacters = 0;
+    }
+
     private void HaveEncounter(EncounterChoice e)
     {
-        Console.WriteLine("having an encounter");
         if (e.Text == "Proceed Recklessly")
         {
             Random r = new Random();
             int target = r.Next(0, 3);
             Character targetChar = PartyProvider.Party[target];
-            Console.WriteLine("Target is: " + targetChar.Name);
+            if (targetChar.HasStatus("Petrified"))
+            {
+                return;
+            }
+            petrifiedCharacters += 1;
+            if (targetChar.IsPlayer)
+            {
+                MessageProvider.AddMessage("You are now a statue.");
+            }
+            else
+            {
+                MessageProvider.AddMessage(targetChar.Name + " is now a statue.");
+            }
+
             targetChar.AddStatus("Petrified");
+            if (petrifiedCharacters == 3)
+            {
+                MessageProvider.AddMessage("Your entire party is now trapped, petrified, in the dungeon.");
+            }
             PartyProvider.CallRequestRefresh();
         }
+        else
+        {
+            MessageProvider.AddMessage("You find a shiny copper coin.");
+        }
+
+
+        MessageProvider.CallRequestRefresh();
+
     }
 }

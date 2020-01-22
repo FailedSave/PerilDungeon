@@ -1,0 +1,18 @@
+﻿@inject IMessageProvider MessageProvider
+
+<h4>Messages</h4>
+@foreach (string message in MessageProvider.GetMostRecentMessages(5)) 
+{ 
+<p>@message</p>
+}
+
+@code {
+    protected override void OnInitialized()
+    {
+        MessageProvider.RefreshRequested += RefreshMe;
+    }
+    private void RefreshMe()
+    {
+        StateHasChanged();
+    }
+}
