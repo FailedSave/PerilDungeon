@@ -1,0 +1,28 @@
+﻿<h3>PartyDisplay</h3>
+@inject IPartyProvider PartyProvider
+
+@if (Party.Count < 1)
+{
+    <p><em>Gathering party...</em></p>
+}
+@foreach (var character in Party)
+{
+    <CharacterDisplay Character="character" />
+}
+@code {
+    private string name = "unknown";
+    private List<Character> Party = new List<Character>();
+
+    protected override void OnInitialized()
+    {
+        name = PartyProvider.Party[0].Name;
+        Party = PartyProvider.Party;
+        PartyProvider.RefreshRequested += RefreshMe;
+    }
+
+
+    private void RefreshMe()
+    {
+        StateHasChanged();
+    }
+}

@@ -1,6 +1,6 @@
 ﻿<div class="card" style="width: 18rem;">
     <div class="card-body">
-        <h5 class="card-title">@Character.Name</h5>
+        <h5 class="card-title">@CharacterLabel</h5>
         <h6 class="card-subtitle mb-2">Status: @StatusText</h6>
         <img src="@Character.Image" width="150"/>
  <!--       <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
@@ -24,6 +24,21 @@
             else
             {
                 return Character.Statuses[0];
+            }
+        }
+    }
+
+    private string CharacterLabel
+    {
+        get
+        {
+            if (Character.IsPlayer)
+            {
+                return Character.Name + " (You)";
+            }
+            else
+            {
+                return Character.Name;
             }
         }
     }

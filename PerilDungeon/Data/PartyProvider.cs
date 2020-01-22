@@ -13,9 +13,10 @@ namespace PerilDungeon.Data
         public PartyProvider()
         {
             _party = new List<Character>();
-            _party.Add(new Character("You"));
+            _party.Add(new Character("Lorraine"));
             _party.Add(new Character("Johanna"));
             _party.Add(new Character("Cylenae"));
+            _party[0].IsPlayer = true;
         }
 
         public List<Character> Party

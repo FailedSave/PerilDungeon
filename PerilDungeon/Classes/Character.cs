@@ -13,12 +13,15 @@ namespace PerilDungeon.Classes
             Stats = new Dictionary<string, int>();
             Statuses = new List<string>();
             CanAct = true;
+            IsPlayer = false;
         }
 
         public string Name { get; set; }
         public Dictionary<string, int> Stats { get; set; }
         public List<string> Statuses { get; set; }
         public bool CanAct { get; set; }
+
+        public bool IsPlayer { get; set; } //controls whether the player is referred to as "you" in messages
 
         public string Image
         {
