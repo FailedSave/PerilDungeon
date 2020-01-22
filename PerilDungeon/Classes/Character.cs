@@ -29,7 +29,7 @@ namespace PerilDungeon.Classes
             {
                 if (Statuses.Contains("Petrified"))
                 {
-                    return "assets/statue.jpg";
+                    return "assets/" + Name.ToLower() + "-stone.png";
                 }
                 return "assets/" + Name.ToLower() + ".png";
             }
