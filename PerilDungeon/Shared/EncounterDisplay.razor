@@ -22,9 +22,7 @@
     {
         if (e.Text == "Proceed Recklessly")
         {
-            Random r = new Random();
-            int target = r.Next(0, 3);
-            Character targetChar = PartyProvider.Party[target];
+            Character targetChar = PartyProvider.Party.GetRandomCharacter();
             if (targetChar.HasStatus("Petrified"))
             {
                 return;
