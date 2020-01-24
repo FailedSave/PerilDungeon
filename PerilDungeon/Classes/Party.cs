@@ -22,10 +22,17 @@ namespace PerilDungeon.Classes
         }
 
         public bool HasCharacterActive
-        {
+        {//TODO refactor
             get
-            { //TODO
-                return true;
+            {
+                foreach (Character c in PartyMembers)
+                {
+                    if (c.CanAct)
+                    {
+                        return true;
+                    }
+                }
+                return false;
             }
         }
     }

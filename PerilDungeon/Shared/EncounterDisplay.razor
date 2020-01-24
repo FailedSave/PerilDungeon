@@ -2,55 +2,33 @@
 @inject IPartyProvider PartyProvider
 @inject IMessageProvider MessageProvider
 
-<h4>@EncounterProvider.EncounterName</h4>
+<h4>@encounter.Title</h4>
+<p>@encounter.Description</p>
 
-@foreach (var encounter in EncounterProvider.Encounters)
+@foreach (var choice in encounter.Choices)
 {
-    <button @onclick="()=>HaveEncounter(encounter)" class="btn btn-primary">@encounter.Text</button>
+    <button @onclick="()=>HaveEncounter(choice)" class="btn btn-primary">@choice.Text</button>
 }
 
 @code {
     //TODO this should not have a party provider and shouldn't be here
 
-    private int petrifiedCharacters;
+    private IEncounter encounter;
+    private Party party;
     protected override void OnInitialized()
     {
-        petrifiedCharacters = 0;
+        party = PartyProvider.Party;
+        encounter = EncounterProvider.Encounter;
     }
 
-    private void HaveEncounter(EncounterChoice e)
+    private void HaveEncounter(IEncounterChoice e)
     {
-        if (e.Text == "Proceed Recklessly")
+        IEnumerable<string> messages = e.Choose(party, null);
+        foreach (string message in messages)
         {
-            Character targetChar = PartyProvider.Party.GetRandomCharacter();
-            if (targetChar.HasStatus("Petrified"))
-            {
-                return;
-            }
-            petrifiedCharacters += 1;
-            if (targetChar.IsPlayer)
-            {
-                MessageProvider.AddMessage("You are now a statue.");
-            }
-            else
-            {
-                MessageProvider.AddMessage(targetChar.Name + " is now a statue.");
-            }
-
-            targetChar.AddStatus("Petrified");
-            if (petrifiedCharacters == 3)
-            {
-                MessageProvider.AddMessage("Your entire party is now trapped, petrified, in the dungeon.");
-            }
-            PartyProvider.CallRequestRefresh();
+            MessageProvider.AddMessage(message);
         }
-        else
-        {
-            MessageProvider.AddMessage("You find a shiny copper coin.");
-        }
-
-
         MessageProvider.CallRequestRefresh();
-
+        PartyProvider.CallRequestRefresh();
     }
 }
