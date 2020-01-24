@@ -8,7 +8,7 @@ namespace PerilDungeon.Data
 {
     interface IPartyProvider
     {
-        public List<Character> Party { get; }
+        public Party Party { get; }
         event Action RefreshRequested;
         void CallRequestRefresh();
     }

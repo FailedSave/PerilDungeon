@@ -1,21 +1,19 @@
 ﻿@inject IPartyProvider PartyProvider
 
 <h4>Party</h4>
-@if (Party.Count < 1)
+@if (Party.PartyMembers.Count < 1)
 {
     <p><em>Gathering party...</em></p>
 }
-@foreach (var character in Party)
+@foreach (var character in Party.PartyMembers)
 {
     <CharacterDisplay Character="character" />
 }
 @code {
-    private string name = "unknown";
-    private List<Character> Party = new List<Character>();
+    private Party Party = new Party();
 
     protected override void OnInitialized()
     {
-        name = PartyProvider.Party[0].Name;
         Party = PartyProvider.Party;
         PartyProvider.RefreshRequested += RefreshMe;
     }

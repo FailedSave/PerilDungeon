@@ -8,24 +8,13 @@ namespace PerilDungeon.Data
 {
     public class PartyProvider : IPartyProvider
     {
-        private List<Character> _party;
 
         public PartyProvider()
         {
-            _party = new List<Character>();
-            _party.Add(new Character("Lorraine"));
-            _party.Add(new Character("Johanna"));
-            _party.Add(new Character("Cylenae"));
-            _party[0].IsPlayer = true;
+            Party = getDefaultParty();
         }
 
-        public List<Character> Party
-        {
-            get
-            {
-                return _party;
-            }
-        }
+        public Party Party { get; private set; }
 
         public event Action RefreshRequested;
         public void CallRequestRefresh()
@@ -33,5 +22,17 @@ namespace PerilDungeon.Data
             RefreshRequested?.Invoke();
         }
 
+        private Party getDefaultParty()
+        {
+            Party party = new Party();
+            Character lorraine = new Character("Lorraine");
+            lorraine.IsPlayer = true;
+            Character johanna = new Character("Johanna");
+            Character cylenae = new Character("Cylenae");
+            party.PartyMembers.Add(lorraine);
+            party.PartyMembers.Add(johanna);
+            party.PartyMembers.Add(cylenae);
+            return party;
+        }
     }
 }
