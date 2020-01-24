@@ -40,12 +40,18 @@ namespace PerilDungeon.Classes
             if (!Statuses.Contains(newStatus))
             {
                 Statuses.Add(newStatus);
+                updateCanAct();
             }
         }
 
         public bool HasStatus (string status)
         {
             return Statuses.Contains(status);
+        }
+
+        private void updateCanAct()
+        {//TODO
+            CanAct = !(HasStatus("Petrified"));
         }
     }
 }

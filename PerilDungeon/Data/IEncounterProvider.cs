@@ -8,7 +8,6 @@ namespace PerilDungeon.Data
 {
     interface IEncounterProvider
     {
-        public string EncounterName { get; set; }
-        public List<EncounterChoice> Encounters { get; set; }
+        public IEncounter Encounter { get; set; }
     }
 }
