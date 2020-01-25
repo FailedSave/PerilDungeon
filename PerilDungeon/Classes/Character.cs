@@ -23,6 +23,14 @@ namespace PerilDungeon.Classes
 
         public bool IsPlayer { get; set; } //controls whether the player is referred to as "you" in messages
 
+        public int Health { get; set; }
+        public int MaxHealth { get; set; }
+        public int Mana { get; set; }
+        public int MaxMana { get; set; }
+        public int Combat { get; set; }
+        public int Knavery { get; set; }
+
+
         public string Image
         {
             get
