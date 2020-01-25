@@ -1,6 +1,7 @@
 ﻿@inject IEncounterProvider EncounterProvider
 @inject IPartyProvider PartyProvider
 @inject IMessageProvider MessageProvider
+@inject NavigationManager NavManager
 
 <h4>@encounter.Title</h4>
 <p>@encounter.Description</p>
@@ -30,5 +31,9 @@
         }
         MessageProvider.CallRequestRefresh();
         PartyProvider.CallRequestRefresh();
+        if (party.GameOver)
+        {
+            NavManager.NavigateTo("gameover");
+        }
     }
 }

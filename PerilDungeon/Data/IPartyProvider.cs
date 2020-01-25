@@ -9,6 +9,7 @@ namespace PerilDungeon.Data
     interface IPartyProvider
     {
         public Party Party { get; }
+        public void ResetGame();
         event Action RefreshRequested;
         void CallRequestRefresh();
     }

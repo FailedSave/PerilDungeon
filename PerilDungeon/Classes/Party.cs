@@ -10,10 +10,17 @@ namespace PerilDungeon.Classes
         public List<Character> PartyMembers { get; set; }
         Random rng;
 
+        public int TimeRemaining;
+        public int Level;
+        public bool GameOver;
+
         public Party()
         {
             PartyMembers = new List<Character>();
             rng = new Random();
+            TimeRemaining = 1000;
+            Level = 1;
+            GameOver = false;
         }
 
         public Character GetRandomCharacter()

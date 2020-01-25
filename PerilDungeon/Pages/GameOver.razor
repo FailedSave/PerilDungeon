@@ -1,0 +1,16 @@
+﻿@page "/gameover"
+@inject IPartyProvider PartyProvider
+@inject NavigationManager NavManager
+
+<h1>Game Over</h1>
+<img src="assets/splash-gameover.png" width="800" />
+<p>You and your friends have been judged by the mighty <strong>Kylan</strong>, and found <strong>wanting</strong>. Transformed by his <strong>wrath</strong>, you will remain statues in the <strong>Delve of Gehennoth</strong>, silent monuments to his unchallenged <strong>might</strong>.</p>
+<h6><a @onclick="()=>ResetParty()" href="game">Restart</a></h6>
+
+@code {
+
+    public void ResetParty()
+    {
+        PartyProvider.ResetGame();
+    }
+}

@@ -51,6 +51,7 @@ namespace PerilDungeon.Classes.Encounters
                         if (!party.HasCharacterActive)
                         {
                             messages.Add("GAME OVER");
+                            party.GameOver = true;
                         }
                         return messages;
                     }));

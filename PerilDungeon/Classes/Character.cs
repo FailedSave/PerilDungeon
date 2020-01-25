@@ -14,6 +14,8 @@ namespace PerilDungeon.Classes
             Statuses = new List<string>();
             CanAct = true;
             IsPlayer = false;
+            Level = 1;
+            XP = 0;
         }
 
         public string Name { get; set; }
@@ -29,6 +31,9 @@ namespace PerilDungeon.Classes
         public int MaxMana { get; set; }
         public int Combat { get; set; }
         public int Knavery { get; set; }
+        public int Level { get; set; }
+        public int XP { get; set; }
+
 
 
         public string Image

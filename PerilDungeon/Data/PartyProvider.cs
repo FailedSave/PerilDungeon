@@ -22,6 +22,11 @@ namespace PerilDungeon.Data
             RefreshRequested?.Invoke();
         }
 
+        public void ResetGame()
+        {
+            Party = getDefaultParty();
+        }
+
         private Party getDefaultParty()
         {
             Party party = new Party();
