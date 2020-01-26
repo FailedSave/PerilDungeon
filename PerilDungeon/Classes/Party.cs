@@ -11,7 +11,8 @@ namespace PerilDungeon.Classes
         Random rng;
 
         public int TimeRemaining;
-        public int Level;
+        public int Depth;
+        public int Money;
         public bool GameOver;
 
         public Party()
@@ -19,7 +20,8 @@ namespace PerilDungeon.Classes
             PartyMembers = new List<Character>();
             rng = new Random();
             TimeRemaining = 1000;
-            Level = 1;
+            Depth = 1;
+            Money = 0;
             GameOver = false;
         }
 

@@ -1,12 +1,40 @@
 ﻿@inject IMessageProvider MessageProvider
 
 <h4>Messages</h4>
-@foreach (string message in MessageProvider.GetMostRecentMessages(5)) 
-{ 
-<p>@message</p>
-}
-
+<div class="message-log">
+    @foreach (MessageDisplay message in GetMessagesForDisplay())
+    {
+        <span style="opacity: @message.opacity">@message.text</span>
+        <br/>
+    }
+</div>
 @code {
+
+    protected struct MessageDisplay
+    {
+        internal string text;
+        internal float opacity;
+    }
+
+    protected List<MessageDisplay> GetMessagesForDisplay()
+    {
+        var messagesWithOpacity = new List<MessageDisplay>();
+        int i = 0; //first 5 are 100% opacity; further taper off
+        foreach (string message in MessageProvider.GetMostRecentMessages(10).Reverse())
+        {
+            i++;
+            if (i < 5)
+            {
+                messagesWithOpacity.Add(new MessageDisplay { text = message, opacity = 1.0f }) ;
+            }
+            else
+            {
+                messagesWithOpacity.Add(new MessageDisplay { text = message, opacity = 1.0f - (0.15f * (i - 5)) });
+            }
+        }
+        return messagesWithOpacity;
+    }
+
     protected override void OnInitialized()
     {
         MessageProvider.RefreshRequested += RefreshMe;
