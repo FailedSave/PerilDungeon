@@ -11,9 +11,15 @@ namespace PerilDungeon.Data
     {
         public EncounterProvider()
         {
-            Encounter = new BasicEncounter();
+            NextEncounter = new FirstEncounter();
         }
 
-        public IEncounter Encounter { get; set; }
+        public IEncounter NextEncounter { get; set; }
+
+        public event Action RefreshRequested;
+        public void CallRequestRefresh()
+        {
+            RefreshRequested?.Invoke();
+        }
     }
 }

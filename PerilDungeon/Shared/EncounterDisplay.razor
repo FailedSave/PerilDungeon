@@ -12,14 +12,13 @@
 }
 
 @code {
-    //TODO this should not have a party provider and shouldn't be here
-
     private IEncounter encounter;
     private Party party;
     protected override void OnInitialized()
     {
         party = PartyProvider.Party;
-        encounter = EncounterProvider.Encounter;
+        encounter = EncounterProvider.NextEncounter;
+        EncounterProvider.RefreshRequested += RefreshMe;
     }
 
     private void HaveEncounter(IEncounterChoice e)
@@ -35,5 +34,13 @@
         {
             NavManager.NavigateTo("gameover");
         }
+        EncounterProvider.NextEncounter = e.GetNextEncounter(party, encounter);
+        encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
+        EncounterProvider.CallRequestRefresh();
+    }
+
+    private void RefreshMe()
+    {
+        StateHasChanged();
     }
 }
