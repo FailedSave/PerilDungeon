@@ -8,6 +8,8 @@ namespace PerilDungeon.Data
 {
     interface IEncounterProvider
     {
-        public IEncounter Encounter { get; set; }
+        public IEncounter NextEncounter { get; set; }
+        event Action RefreshRequested;
+        void CallRequestRefresh();
     }
 }
