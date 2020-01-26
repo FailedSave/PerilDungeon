@@ -1,9 +1,19 @@
 ﻿@page "/game"
-@inject IPartyProvider PartyProvider
 
-<PartyDisplay/>
-<EncounterDisplay/>
-<MessagesDisplay/>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-4">
+            <EncounterDisplay />
+        </div>
+        <div class="col-4">
+            <MessagesDisplay />
+        </div>
+        <div class="col-4">
+            <PartyDisplay />
+        </div>
+    </div>
+</div>
+
 
 @code {
 
