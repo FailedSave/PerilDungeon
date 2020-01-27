@@ -30,6 +30,8 @@ namespace PerilDungeon.Classes.Encounters
             set { }
         }
 
+        public bool IsAvailable { get { return true; } set { } }
+
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
             return new BasicEncounter();
