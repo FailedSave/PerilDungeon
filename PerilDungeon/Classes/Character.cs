@@ -11,7 +11,7 @@ namespace PerilDungeon.Classes
         {
             Name = name;
             Stats = new Dictionary<string, int>();
-            Statuses = new List<string>();
+            Statuses = new HashSet<string>();
             CanAct = true;
             IsPlayer = false;
             Level = 1;
@@ -20,7 +20,7 @@ namespace PerilDungeon.Classes
 
         public string Name { get; set; }
         public Dictionary<string, int> Stats { get; set; }
-        public List<string> Statuses { get; set; }
+        public HashSet<string> Statuses { get; set; }
         public bool CanAct { get; set; }
 
         public bool IsPlayer { get; set; } //controls whether the player is referred to as "you" in messages
@@ -50,11 +50,8 @@ namespace PerilDungeon.Classes
 
         public void AddStatus(string newStatus)
         {
-            if (!Statuses.Contains(newStatus))
-            {
-                Statuses.Add(newStatus);
-                updateCanAct();
-            }
+            Statuses.Add(newStatus);
+            updateCanAct();
         }
 
         public bool HasStatus (string status)

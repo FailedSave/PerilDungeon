@@ -1,16 +1,24 @@
-﻿<div class="mt-2">
-    <h5>@CharacterLabel</h5>
-    <h6>Status: @StatusText</h6>
-    <img src="@Character.Image" width="250" />
-</div>
-
-<!--<div class="card" style="width: 18rem;">
-    <div class="card-body">
-        <h5 class="card-title">@CharacterLabel</h5>
-        <h6 class="card-subtitle mb-2">Status: @StatusText</h6>
-        <img src="@Character.Image" width="250"/>
+﻿<div class="container mt-2">
+    <div class="row">
+        <div class="col-6">
+            <h5>@CharacterLabel</h5>
+            Status: @StatusText
+            <img src="@Character.Image" width="250" />
+        </div>
+        <div class="col-6">
+            <ul style="list-style-type:none">
+                <li>Health: @Character.Health / @Character.MaxHealth</li>
+                <li>Mana: @Character.Mana / @Character.MaxMana</li>
+                <li>Combat: @Character.Combat</li>
+                <li>Knavery: @Character.Knavery</li>
+                <li>XP: @Character.XP</li>
+                <li>Level: @Character.Level</li>
+                <li>Item: None</li>
+                <li>Worn: Ordinary Clothes</li>
+            </ul>
+        </div>
     </div>
-</div>-->
+</div>
 
 @code {
     [Parameter]
@@ -26,7 +34,7 @@
             }
             else
             {
-                return Character.Statuses[0];
+                return string.Join(",", Character.Statuses);
             }
         }
     }
@@ -45,6 +53,14 @@
             }
         }
     }
-
+/*
+            Health: @Character.Health / @Character.MaxHealth <br />
+            Mana: @Character.Mana / @Character.MaxMana <br />
+            Combat: @Character.Combat <br />
+            Knavery: @Character.Knavery <br />
+            XP: @Character.XP <br />
+            Level: @Character.Level <br />
+            Item: None <br />
+            Worn: Ordinary Clothes <br/>*/
 
 }
