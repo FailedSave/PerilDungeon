@@ -1,7 +1,8 @@
 ﻿@import url('open-iconic/font/css/open-iconic-bootstrap.min.css');
 
 html, body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Adamina', Helvetica, Arial, sans-serif;
+    background-color: #222222;
 }
 
 a, .btn-link {
@@ -28,11 +29,13 @@ app {
 
 .main {
     flex: 1;
+    background-color: #222222;
+    color: #f7f7f7;
 }
 
     .main .top-row {
-        background-color: #f7f7f7;
-        border-bottom: 1px solid #d6d5d5;
+        background-color: #111111;
+        border-bottom: 1px solid #444444;
         justify-content: flex-end;
     }
 
