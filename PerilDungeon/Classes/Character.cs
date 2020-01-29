@@ -32,7 +32,7 @@ namespace PerilDungeon.Classes
         public int Mana { get; set; }
         public int MaxMana { get; set; }
         public int Combat { get; set; }
-        public int Knavery { get; set; }
+        public int Thievery { get; set; }
         public int Level { get; set; }
         public int XP { get; set; }
 
