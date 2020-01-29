@@ -29,6 +29,15 @@ namespace PerilDungeon.Classes
         {
             return PartyMembers[rng.Next(0, PartyMembers.Count)];
         }
+        public Character GetRandomActiveCharacter()
+        {
+            Character target = PartyMembers[rng.Next(0, PartyMembers.Count)];
+            while (!target.CanAct)
+            {
+                target = PartyMembers[rng.Next(0, PartyMembers.Count)];
+            }
+            return target;
+        }
 
         public bool HasCharacterActive
         {//TODO refactor

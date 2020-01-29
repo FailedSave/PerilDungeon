@@ -7,8 +7,10 @@ namespace PerilDungeon.Classes
 {
     public class Character
     {
+        private Random rng;
         public Character(string name)
         {
+            rng = new Random();
             Name = name;
             Stats = new Dictionary<string, int>();
             Statuses = new HashSet<string>();
@@ -33,8 +35,6 @@ namespace PerilDungeon.Classes
         public int Knavery { get; set; }
         public int Level { get; set; }
         public int XP { get; set; }
-
-
 
         public string Image
         {
@@ -63,5 +63,28 @@ namespace PerilDungeon.Classes
         {//TODO
             CanAct = !(HasStatus("Petrified"));
         }
+        
+        public void Rest()
+        {
+            //Can't recover health if you're stone
+            if (HasStatus("Petrified"))
+            {
+                return;
+            }
+            int recovery = rng.Next(1, Level + 1);
+            recovery += rng.Next(1, 1 + (MaxHealth - Health)) / 10;
+            Health = Math.Min(MaxHealth, Health + recovery);
+
+            recovery = rng.Next(1, Level + 1);
+            recovery += rng.Next(1, 1 + (MaxMana - Mana)) / 10;
+            Mana = Math.Min(MaxMana, Mana + recovery);
+        }
+
+        public void LoseHealth(int amount)
+        {
+            Health = Math.Max(0, Health - amount);
+        }
+
+        public double HealthRatio { get => (double)Health / (double)MaxHealth; }
     }
 }

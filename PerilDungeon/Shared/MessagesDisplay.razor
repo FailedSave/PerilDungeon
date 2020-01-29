@@ -4,8 +4,7 @@
 <div class="message-log">
     @foreach (MessageDisplay message in GetMessagesForDisplay())
     {
-        <span style="opacity: @message.opacity">@message.text</span>
-        <br/>
+        <p><span style="opacity: @message.opacity">@message.text</span></p>
     }
 </div>
 @code {

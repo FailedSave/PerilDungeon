@@ -5,27 +5,24 @@ using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes.Encounters
 {
-    //An Encounter choice that only prints a message and doesn't affect the party.
-    public class MessageOnlyEncounterChoice : IEncounterChoice
+    public class RestEncounterChoice : IEncounterChoice
     {
-        public MessageOnlyEncounterChoice(string text, string message)
-        {
-            Text = text;
-            Message = message;
-        }
-
-        public string Text { get; set; }
-        public string Message { get; set; }
+        public string Text { get => "Rest"; set { } }
         public Func<Party, Character, IEnumerable<string>> Choose
         {
             get
             {
                 return (Party party, Character character) =>
-              {
-                  List<string> messages = new List<string>();
-                  messages.Add(Message);
-                  return messages;
-              };
+                {
+                    party.TimeRemaining -= 10;
+                    foreach(Character c in party.PartyMembers)
+                    {
+                        c.Rest();
+                    }
+                    List<string> messages = new List<string>();
+                    messages.Add("You and your friends take a short rest to catch your breath and tend to your scrapes.");
+                    return messages;
+                };
             }
             set { }
         }
