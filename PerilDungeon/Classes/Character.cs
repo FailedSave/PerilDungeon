@@ -82,6 +82,10 @@ namespace PerilDungeon.Classes
 
         public void LoseHealth(int amount)
         {
+            if (HasStatus("Petrified"))
+            {
+                return;
+            }
             Health = Math.Max(0, Health - amount);
         }
 
