@@ -47,7 +47,7 @@ namespace PerilDungeon.Classes.Encounters
 
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return EncounterSelector.PickEncounter(p.Depth);
+            return EncounterSelector.PickEncounter(p, null);
         }
     }
 }

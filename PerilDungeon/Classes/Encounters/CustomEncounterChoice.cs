@@ -17,7 +17,7 @@ namespace PerilDungeon.Classes.Encounters
         public Func<Party, Character, IEnumerable<string>> Choose { get; set; }
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return new BasicEncounter();
+            return EncounterSelector.PickEncounter(p, typeof(BasicEncounter));
         }
         public bool IsAvailable { get { return true; } set { } }
     }

@@ -48,11 +48,6 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add(target.Name + " is now a statue.");
                         }
-                        if (!party.HasCharacterActive)
-                        {
-                            messages.Add("GAME OVER");
-                            party.GameOver = true;
-                        }
                         return messages;
                     }));
                 return choices;

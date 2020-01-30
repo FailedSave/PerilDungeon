@@ -9,12 +9,26 @@ namespace PerilDungeon.Classes
     public class EncounterSelector
     {
         public static Random rng;
-        public static IEncounter PickEncounter(int depth)
+
+        //Can pass in the encounter you "prefer", but the encounter picker may override (say, with the game over encounter)
+        public static IEncounter PickEncounter(Party party, Type preferredEncounter)
         {
             if (rng == null)
             {
                 rng = new Random();
             }
+
+            //If the party is at game over, do that
+            if (!party.HasCharacterActive)
+            {
+                return new GameOverEncounter();
+            }
+
+            if (preferredEncounter != null)
+            {
+                return (IEncounter)Activator.CreateInstance(preferredEncounter);
+            }
+
             return new BadAirEncounter();
         }
     }
