@@ -5,22 +5,19 @@ using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes.Encounters
 {
-    public class RestEncounterChoice : IEncounterChoice
+    public class GameOverEncounterChoice : IEncounterChoice
     {
-        public string Text { get => "Rest"; set { } }
+        public string Text { get => "The End"; set { } }
         public Func<Party, Character, IEnumerable<string>> Choose
         {
             get
             {
                 return (Party party, Character character) =>
                 {
-                    party.TimeRemaining -= 10;
-                    foreach(Character c in party.PartyMembers)
-                    {
-                        c.Rest();
-                    }
                     List<string> messages = new List<string>();
-                    messages.Add("You and your friends take a short rest to catch your breath and tend to your scrapes.");
+
+                    messages.Add("GAME OVER");
+                    party.GameOver = true;
                     return messages;
                 };
             }
@@ -31,8 +28,7 @@ namespace PerilDungeon.Classes.Encounters
 
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return EncounterSelector.PickEncounter(p, typeof(ExplorationEncounter));
+            return EncounterSelector.PickEncounter(p, typeof(GameOverEncounter));
         }
-
     }
 }

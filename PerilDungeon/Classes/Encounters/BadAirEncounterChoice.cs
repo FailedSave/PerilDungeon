@@ -51,11 +51,7 @@ namespace PerilDungeon.Classes.Encounters
                             messages.Add(target.Name + " breathes too much of the noxious gas, but manages to get away coughing.");
                         }
                     }
-                    if (!party.HasCharacterActive)
-                    {
-                        messages.Add("GAME OVER");
-                        party.GameOver = true;
-                    }
+
                     return messages;
                 };
             }
@@ -66,7 +62,7 @@ namespace PerilDungeon.Classes.Encounters
 
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return new ExplorationEncounter();
+            return EncounterSelector.PickEncounter(p, typeof(ExplorationEncounter));
         }
     }
 }
