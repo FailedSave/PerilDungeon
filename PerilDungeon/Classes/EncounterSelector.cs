@@ -29,7 +29,18 @@ namespace PerilDungeon.Classes
                 return (IEncounter)Activator.CreateInstance(preferredEncounter);
             }
 
-            return new BadAirEncounter();
+            IEncounter encounter;
+
+            if (rng.NextDouble() > 0.6)
+            {
+                encounter = new StairsEncounter();
+            }
+            else
+            {
+                encounter = new BadAirEncounter();
+            }
+            encounter.Party = party;
+            return encounter;
         }
     }
 }

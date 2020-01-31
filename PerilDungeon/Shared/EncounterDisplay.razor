@@ -8,7 +8,7 @@
 
 @foreach (var choice in encounter.Choices)
 {
-    <button @onclick="()=>HaveEncounter(choice)" class="btn btn-primary">@choice.Text</button>
+    <button @onclick="()=>HaveEncounter(choice)" class="btn btn-primary" disabled="@DisabledFromChoice(choice)">@choice.Text</button>
 }
 
 @code {
@@ -37,6 +37,11 @@
         EncounterProvider.NextEncounter = e.GetNextEncounter(party, encounter);
         encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
         EncounterProvider.CallRequestRefresh();
+    }
+
+    private bool DisabledFromChoice(IEncounterChoice e)
+    {
+        return !e.IsAvailable;
     }
 
     private void RefreshMe()
