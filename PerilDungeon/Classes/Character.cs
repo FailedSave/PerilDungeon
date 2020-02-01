@@ -89,6 +89,17 @@ namespace PerilDungeon.Classes
             Health = Math.Max(0, Health - amount);
         }
 
+        public void AwardXP(int amount, int depth)
+        {
+            //You get only half XP per floor you are too high
+            if (depth < Level)
+            {
+                amount = (int)(amount / (Math.Pow(2, Level - depth)));
+            }
+
+            XP += amount;
+        }
+
         public double HealthRatio { get => (double)Health / (double)MaxHealth; }
     }
 }

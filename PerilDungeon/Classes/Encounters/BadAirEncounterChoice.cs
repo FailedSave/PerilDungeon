@@ -18,11 +18,16 @@ namespace PerilDungeon.Classes.Encounters
                     List<string> messages = new List<string>();
                     foreach (Character c in party.PartyMembers)
                     {
-                        c.LoseHealth(EncounterSelector.rng.Next(0, 5) + party.Depth * 3);
+                        if (c.CanAct)
+                        {
+                            c.AwardXP(5, party.Depth);
+                            c.LoseHealth(EncounterSelector.rng.Next(0, 5) + party.Depth * 3);
+                        }
                     }
                     Character target = party.GetRandomActiveCharacter();
 
                     target.LoseHealth(party.Depth * 3);
+                    target.AwardXP(25, party.Depth);
                     if (target.HealthRatio < 0.3 + EncounterSelector.rng.NextDouble() * .3)
                     {
                         target.AddStatus("Petrified");
