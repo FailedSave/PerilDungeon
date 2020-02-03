@@ -21,6 +21,9 @@ namespace PerilDungeon.Classes
         }
 
         public string Name { get; set; }
+        public string YouOrName { get => IsPlayer ? "You" : Name; }
+        public string YouAreOrNameIs { get => IsPlayer ? "You are" : Name + " is"; }
+
         public Dictionary<string, int> Stats { get; set; }
         public HashSet<string> Statuses { get; set; }
         public bool CanAct { get; set; }
@@ -101,5 +104,13 @@ namespace PerilDungeon.Classes
         }
 
         public double HealthRatio { get => (double)Health / (double)MaxHealth; }
+
+        //roughly, if 2dSkill / 2 > target
+        public bool CheckSkill(int skill, int target)
+        {
+            double roll = (rng.NextDouble() + rng.NextDouble()) * skill;
+            Console.WriteLine($"Skill check: {roll} vs. {target}");
+            return (roll > target);
+        }
     }
 }
