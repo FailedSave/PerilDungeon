@@ -49,7 +49,6 @@ namespace PerilDungeon.Classes.Encounters
                         case StairsDirection.Ignore:
                             {
                                 messages.Add("You ignore the stairs and continue on your way.");
-                                party.Depth++;
                                 break;
                             }
                     }

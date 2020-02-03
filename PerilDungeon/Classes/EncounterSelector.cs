@@ -31,13 +31,13 @@ namespace PerilDungeon.Classes
 
             IEncounter encounter;
 
-            if (rng.NextDouble() > 0.6)
+            if (rng.NextDouble() > 0.8)
             {
                 encounter = new StairsEncounter();
             }
             else
             {
-                encounter = new BadAirEncounter();
+                encounter = new TrappedDoorEncounter();
             }
             encounter.Party = party;
             return encounter;

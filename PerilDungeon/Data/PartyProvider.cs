@@ -55,6 +55,7 @@ namespace PerilDungeon.Data
             party.PartyMembers.Add(lorraine);
             party.PartyMembers.Add(johanna);
             party.PartyMembers.Add(cylenae);
+            party.GameOver = false;
             return party;
         }
     }
