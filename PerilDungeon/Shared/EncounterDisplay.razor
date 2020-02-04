@@ -2,6 +2,7 @@
 @inject IPartyProvider PartyProvider
 @inject IMessageProvider MessageProvider
 @inject NavigationManager NavManager
+@using PerilDungeon.Classes.Encounters
 
 <h4>@encounter.Title</h4>
 <p>@encounter.Description</p>
@@ -32,7 +33,12 @@
         PartyProvider.CallRequestRefresh();
         if (party.GameOver)
         {
+            party.GameOver = false;
             NavManager.NavigateTo("gameover");
+            EncounterProvider.NextEncounter = new FirstEncounter();
+            encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
+            EncounterProvider.CallRequestRefresh();
+            return;
         }
         EncounterProvider.NextEncounter = e.GetNextEncounter(party, encounter);
         encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
