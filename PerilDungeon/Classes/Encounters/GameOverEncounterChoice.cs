@@ -28,7 +28,7 @@ namespace PerilDungeon.Classes.Encounters
 
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return EncounterSelector.PickEncounter(p, typeof(GameOverEncounter));
+            return EncounterSelector.PickEncounter(p, typeof(FirstEncounter));
         }
     }
 }
