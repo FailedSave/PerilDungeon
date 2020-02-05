@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text;
 using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes
@@ -39,15 +40,25 @@ namespace PerilDungeon.Classes
         public int Level { get; set; }
         public int XP { get; set; }
 
+        public IEquipment MainItem { get; set; }
+        public IEquipment BodyItem { get; set; }
+
         public string Image
         {
             get
             {
+                StringBuilder sb = new StringBuilder("assets/" + Name.ToLower());
+                if (BodyItem == null)
+                {
+                    sb.Append("-n");
+                }
+
                 if (Statuses.Contains("Petrified"))
                 {
-                    return "assets/" + Name.ToLower() + "-stone.png";
+                    sb.Append("-stone");
                 }
-                return "assets/" + Name.ToLower() + ".png";
+                sb.Append(".png");
+                return sb.ToString();
             }
         }
 

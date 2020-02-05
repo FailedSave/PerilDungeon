@@ -14,7 +14,7 @@
                 <li>XP: @Character.XP</li>
                 <li>Level: @Character.Level</li>
                 <li>Item: None</li>
-                <li>Worn: Ordinary Clothes</li>
+                <li>Worn: @ArmorDescription</li>
             </ul>
         </div>
     </div>
@@ -63,6 +63,21 @@
             else
             {
                 return Character.Name;
+            }
+        }
+    }
+
+    private string ArmorDescription
+    {
+        get
+        {
+            if (Character.BodyItem == null)
+            {
+                return "Nothing!";
+            }
+            else
+            {
+                return Character.BodyItem.Name;
             }
         }
     }

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using PerilDungeon.Classes;
+using PerilDungeon.Classes.Items;
 
 namespace PerilDungeon.Data
 {
@@ -38,6 +39,7 @@ namespace PerilDungeon.Data
             lorraine.MaxMana = 100;
             lorraine.Combat = 10;
             lorraine.Thievery = 15;
+            lorraine.BodyItem = new ClothesEquipment();
             Character johanna = new Character("Johanna");
             johanna.Health = 120;
             johanna.MaxHealth = 120;
@@ -45,6 +47,7 @@ namespace PerilDungeon.Data
             johanna.MaxMana = 50;
             johanna.Combat = 15;
             johanna.Thievery = 5;
+            //johanna.BodyItem = new ClothesEquipment();
             Character cylenae = new Character("Cylenae");
             cylenae.Health = 50;
             cylenae.MaxHealth = 50;
@@ -52,6 +55,7 @@ namespace PerilDungeon.Data
             cylenae.MaxMana = 200;
             cylenae.Combat = 5;
             cylenae.Thievery = 10;
+            cylenae.BodyItem = new ClothesEquipment();
             party.PartyMembers.Add(lorraine);
             party.PartyMembers.Add(johanna);
             party.PartyMembers.Add(cylenae);
