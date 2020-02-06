@@ -37,7 +37,7 @@ namespace PerilDungeon.Classes
             }
             else
             {
-                encounter = new TrappedDoorEncounter();
+                encounter = new BasiliskEncounter();
             }
             encounter.Party = party;
             return encounter;

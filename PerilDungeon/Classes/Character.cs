@@ -23,7 +23,11 @@ namespace PerilDungeon.Classes
 
         public string Name { get; set; }
         public string YouOrName { get => IsPlayer ? "You" : Name; }
+        public string YouOrNameLower { get => IsPlayer ? "you" : Name; }
         public string YouAreOrNameIs { get => IsPlayer ? "You are" : Name + " is"; }
+        public string YourOrHerLower { get => IsPlayer ? "your" : "her"; }
+        public string YouOrHerLower { get => IsPlayer ? "you" : "her"; }
+        public string PossessiveLower { get => IsPlayer ? "your" : Name + "'s"; }
 
         public Dictionary<string, int> Stats { get; set; }
         public HashSet<string> Statuses { get; set; }
