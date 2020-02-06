@@ -37,7 +37,14 @@ namespace PerilDungeon.Classes
             }
             else
             {
-                encounter = new TrappedDoorEncounter();
+                if (party.Depth > 3)
+                {
+                    encounter = new UnweaverEncounter();
+                }
+                else
+                {
+                    encounter = new BasiliskEncounter();
+                }
             }
             encounter.Party = party;
             return encounter;

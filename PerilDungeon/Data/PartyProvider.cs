@@ -47,7 +47,7 @@ namespace PerilDungeon.Data
             johanna.MaxMana = 50;
             johanna.Combat = 15;
             johanna.Thievery = 5;
-            //johanna.BodyItem = new ClothesEquipment();
+            johanna.BodyItem = new ClothesEquipment();
             Character cylenae = new Character("Cylenae");
             cylenae.Health = 50;
             cylenae.MaxHealth = 50;
