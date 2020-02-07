@@ -3,11 +3,33 @@
 @inject NavigationManager NavManager
 
 <h1>Game Over</h1>
-<img src="assets/splash-gameover.png" width="800" />
+<img src="@SplashImage" width="800" />
 <p>You and your friends have been judged by the mighty <strong>Kylan</strong>, and found <strong>wanting</strong>. Transformed by his <strong>wrath</strong>, you will remain statues in the <strong>Delve of Gehennoth</strong>, silent monuments to his unchallenged <strong>might</strong>.</p>
 <h6><a @onclick="()=>ResetParty()" href="game">Restart</a></h6>
 
 @code {
+
+    public string SplashImage
+    {
+        get
+        {
+            System.Text.StringBuilder sb = new System.Text.StringBuilder("assets/splash-gameover");
+            if (PartyProvider.Party.PartyMembers[0].BodyItem == null)
+            {
+                sb.Append("-l");
+            }
+            if (PartyProvider.Party.PartyMembers[1].BodyItem == null)
+            {
+                sb.Append("-j");
+            }
+            if (PartyProvider.Party.PartyMembers[2].BodyItem == null)
+            {
+                sb.Append("-c");
+            }
+            sb.Append(".png");
+            return sb.ToString();
+        }
+    }
 
     public void ResetParty()
     {
