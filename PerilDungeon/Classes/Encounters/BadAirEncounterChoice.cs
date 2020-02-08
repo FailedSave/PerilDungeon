@@ -9,11 +9,11 @@ namespace PerilDungeon.Classes.Encounters
     public class BadAirEncounterChoice : IEncounterChoice
     {
         public string Text { get => "Oh no!"; set { } }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
-                return (Party party, Character character) =>
+                return (Party party) =>
                 {
                     List<string> messages = new List<string>();
                     foreach (Character c in party.PartyMembers)

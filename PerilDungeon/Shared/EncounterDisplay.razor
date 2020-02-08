@@ -24,7 +24,7 @@
 
     private void HaveEncounter(IEncounterChoice e)
     {
-        IEnumerable<string> messages = e.Choose(party, null);
+        IEnumerable<string> messages = e.Choose(party);
         foreach (string message in messages)
         {
             MessageProvider.AddMessage(message);

@@ -24,13 +24,13 @@ namespace PerilDungeon.Classes.Encounters
         public StairsDirection Direction { get; set; }
 
         public string Text { get; set; }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
                 List<string> messages = new List<string>();
 
-                return (Party party, Character character) =>
+                return (Party party) =>
                 {
                     switch (Direction)
                     {

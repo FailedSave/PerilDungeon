@@ -17,21 +17,21 @@ namespace PerilDungeon.Classes.Encounters
             {
                 List<IEncounterChoice> choices = new List<IEncounterChoice>();
                 choices.Add(new CustomEncounterChoice("Rest",
-                    (Party party, Character character) =>
+                    (Party party) =>
                     {
                         List<string> messages = new List<string>();
                         messages.Add("You feel slightly refreshed.");
                         return messages;
                     }));
                 choices.Add(new CustomEncounterChoice("Explore Cautiously",
-                    (Party party, Character character) =>
+                    (Party party) =>
                     {
                         List<string> messages = new List<string>();
                         messages.Add("You find a shiny coin.");
                         return messages;
                     }));
                 choices.Add(new CustomEncounterChoice("Explore Recklessly",
-                    (Party party, Character character) =>
+                    (Party party) =>
                     {
                         List<string> messages = new List<string>();
                         Character target = party.GetRandomCharacter();
