@@ -16,12 +16,12 @@ namespace PerilDungeon.Classes.Encounters
         public Character Character;
 
         public string Text { get; set; }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
                 List<string> messages = new List<string>();
-                return (Party party, Character character) =>
+                return (Party party) =>
                 {
                     Character.AwardXP(35, party.Depth);
                     party.Money += party.Depth * EncounterSelector.rng.Next(10, 20) + EncounterSelector.rng.Next(1, 5);

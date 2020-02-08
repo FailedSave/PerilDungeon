@@ -7,14 +7,14 @@ namespace PerilDungeon.Classes.Encounters
 {
     public class CustomEncounterChoice : IEncounterChoice
     {
-        public CustomEncounterChoice(string text, Func<Party, Character, IEnumerable<string>> choose)
+        public CustomEncounterChoice(string text, Func<Party, IEnumerable<string>> choose)
         {
             Text = text;
             Choose = choose;
         }
 
         public string Text { get; set; }
-        public Func<Party, Character, IEnumerable<string>> Choose { get; set; }
+        public Func<Party, IEnumerable<string>> Choose { get; set; }
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
             return EncounterSelector.PickEncounter(p, typeof(BasicEncounter));

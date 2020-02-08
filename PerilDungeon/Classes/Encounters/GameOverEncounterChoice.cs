@@ -8,11 +8,11 @@ namespace PerilDungeon.Classes.Encounters
     public class GameOverEncounterChoice : IEncounterChoice
     {
         public string Text { get => "The End"; set { } }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
-                return (Party party, Character character) =>
+                return (Party party) =>
                 {
                     List<string> messages = new List<string>();
 

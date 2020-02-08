@@ -8,11 +8,11 @@ namespace PerilDungeon.Classes.Encounters
     public class RestEncounterChoice : IEncounterChoice
     {
         public string Text { get => "Rest"; set { } }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
-                return (Party party, Character character) =>
+                return (Party party) =>
                 {
                     party.TimeRemaining -= 10;
                     foreach(Character c in party.PartyMembers)

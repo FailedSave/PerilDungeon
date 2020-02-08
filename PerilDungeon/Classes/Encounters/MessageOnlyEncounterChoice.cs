@@ -16,11 +16,11 @@ namespace PerilDungeon.Classes.Encounters
 
         public string Text { get; set; }
         public string Message { get; set; }
-        public Func<Party, Character, IEnumerable<string>> Choose
+        public Func<Party, IEnumerable<string>> Choose
         {
             get
             {
-                return (Party party, Character character) =>
+                return (Party party) =>
               {
                   List<string> messages = new List<string>();
                   messages.Add(Message);
