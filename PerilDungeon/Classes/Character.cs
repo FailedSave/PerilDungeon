@@ -116,6 +116,26 @@ namespace PerilDungeon.Classes
             }
 
             XP += amount;
+            checkLevel();
+        }
+
+        private void checkLevel()
+        {
+            int requirement = Level * 25 + 75; //100, 125, 150...
+            if (XP > requirement)
+            {
+                XP -= requirement;
+                gainLevel();
+            }
+        }
+
+        private void gainLevel()
+        {
+            Level += 1;
+            Combat += 1;
+            Thievery += 1;
+            MaxHealth += 10;
+            MaxMana += 10;
         }
 
         public double HealthRatio { get => (double)Health / (double)MaxHealth; }
