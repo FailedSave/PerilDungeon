@@ -37,7 +37,7 @@ namespace PerilDungeon.Classes.Encounters
                         }
                         else
                         {
-                            target.BodyItem = null;
+                            target.DestroyBodyItem();
                             messages.Add($"As {target.YouOrNameLower} {(target.IsPlayer ? "fight" : "fights")} the unweaver, it manages to rake {target.YourOrHerLower} clothes with its antennae. It squeals in joy, as they turn to dust and threads and fall away, leaving {target.YouOrHerLower} naked. The monster is defeated, but {target.PossessiveLower} clothes are gone forever.");
                         }
                     }

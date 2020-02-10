@@ -36,7 +36,7 @@ namespace PerilDungeon.Classes.Encounters
                             }
                             else
                             {
-                                target.BodyItem = null;
+                                target.DestroyBodyItem();
                                 messages.Add($"The unweaver manages to catch up to {target.YouOrNameLower}, and swiftly destroys {target.YourOrHerLower} clothes with its antennae. You make your escape while it enjoys its meal.");
                             }
                         }
@@ -48,7 +48,7 @@ namespace PerilDungeon.Classes.Encounters
                             }
                             else
                             {
-                                target.BodyItem = null;
+                                target.DestroyBodyItem();
                                 messages.Add($"The unweaver approaches the statue of {target.YouOrNameLower} and devours its clothes. The rest of the party manages to conceal themselves while it finishes its meal.");
                             }
 

@@ -148,6 +148,11 @@ namespace PerilDungeon.Classes
             checkLevel();
         }
 
+        public void DestroyBodyItem()
+        {
+            BodyItem = null;
+        }
+
         private void checkLevel()
         {
             int requirement = Level * 25 + 75; //100, 125, 150...

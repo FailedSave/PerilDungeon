@@ -51,7 +51,7 @@ namespace PerilDungeon.Classes.Encounters
                     {
                         messages.Add($"As {Character.YouOrNameLower} dips {Character.YourOrHerLower} hands into the spring to drink, {Character.YouOrSheLower} {(Character.IsPlayer ? "jerk" : "jerks")} them back quickly; this is no water, but corrosive acid! Unfortunately {Character.PossessiveLower} clothes are destroyed from carelessly splashed liquid, although {Character.YouAreOrNameIsLower} not seriously hurt.");
                         Character.LoseHealth(1);
-                        Character.BodyItem = null;
+                        Character.DestroyBodyItem();
                     }
 
 
