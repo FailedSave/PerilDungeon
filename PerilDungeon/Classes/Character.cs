@@ -25,8 +25,10 @@ namespace PerilDungeon.Classes
         public string YouOrName { get => IsPlayer ? "You" : Name; }
         public string YouOrNameLower { get => IsPlayer ? "you" : Name; }
         public string YouAreOrNameIs { get => IsPlayer ? "You are" : Name + " is"; }
+        public string YouAreOrNameIsLower { get => IsPlayer ? "you are" : Name + " is"; }
         public string YourOrHerLower { get => IsPlayer ? "your" : "her"; }
         public string YouOrHerLower { get => IsPlayer ? "you" : "her"; }
+        public string YouOrSheLower { get => IsPlayer ? "you" : "she"; }
         public string PossessiveLower { get => IsPlayer ? "your" : Name + "'s"; }
 
         public Dictionary<string, int> Stats { get; set; }
@@ -105,6 +107,33 @@ namespace PerilDungeon.Classes
                 return;
             }
             Health = Math.Max(0, Health - amount);
+        }
+
+        public void GainHealth(int amount)
+        {
+            if (HasStatus("Petrified"))
+            {
+                return;
+            }
+            Health = Math.Min(MaxHealth, Health + amount);
+        }
+        
+        public void LoseMana(int amount)
+        {
+            if (HasStatus("Petrified"))
+            {
+                return;
+            }
+            Mana = Math.Max(0, Mana - amount);
+        }
+
+        public void GainMana(int amount)
+        {
+            if (HasStatus("Petrified"))
+            {
+                return;
+            }
+            Mana = Math.Min(MaxMana, Mana + amount);
         }
 
         public void AwardXP(int amount, int depth)

@@ -43,7 +43,7 @@ namespace PerilDungeon.Classes
                 }
                 else
                 {
-                    encounter = new BasiliskEncounter();
+                    encounter = new FountainEncounter();
                 }
             }
             encounter.Party = party;
