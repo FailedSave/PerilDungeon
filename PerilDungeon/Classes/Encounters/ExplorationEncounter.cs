@@ -17,8 +17,8 @@ namespace PerilDungeon.Classes.Encounters
             {
                 List<IEncounterChoice> choices = new List<IEncounterChoice>();
                 choices.Add(new RestEncounterChoice());
-                choices.Add(new ExploreEncounterChoice("Explore Carefully", true));
-                choices.Add(new ExploreEncounterChoice("Onward Boldly", false));
+                choices.Add(new ExploreEncounterChoice("Explore the Delve", true));
+                //choices.Add(new ExploreEncounterChoice("Onward Boldly", false));
                 return choices;
             }
             set { }
