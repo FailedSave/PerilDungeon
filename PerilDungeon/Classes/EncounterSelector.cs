@@ -24,6 +24,12 @@ namespace PerilDungeon.Classes
                 return new GameOverEncounter();
             }
 
+            //If the party is out of time, send them to that
+            if (party.TimeRemaining <= 0)
+            {
+                return new TimeUpEncounter();
+            }
+
             if (preferredEncounter != null)
             {
                 return (IEncounter)Activator.CreateInstance(preferredEncounter);
