@@ -9,6 +9,7 @@ namespace PerilDungeon.Classes
     public class EncounterSelector
     {
         public static Random rng;
+        public static Type lastEncounter;
 
         //Can pass in the encounter you "prefer", but the encounter picker may override (say, with the game over encounter)
         public static IEncounter PickEncounter(Party party, Type preferredEncounter)
@@ -35,9 +36,17 @@ namespace PerilDungeon.Classes
                 return (IEncounter)Activator.CreateInstance(preferredEncounter);
             }
 
-            IEncounter encounter;
 
-            encounter = (IEncounter)Activator.CreateInstance(pickEncounterFromWeightedList(generateEncounterTable(party)));
+            Type chosenEncounter = null;
+            do
+            {
+                chosenEncounter = pickEncounterFromWeightedList(generateEncounterTable(party));
+            }
+            while (chosenEncounter == lastEncounter);
+
+            lastEncounter = chosenEncounter; //can't get the same one twice in a row
+
+            IEncounter encounter = (IEncounter)Activator.CreateInstance(chosenEncounter);
 
             encounter.Party = party;
             return encounter;

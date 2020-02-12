@@ -74,7 +74,7 @@ namespace PerilDungeon.Classes.Encounters
 
         public IEncounter GetNextEncounter(Party p, IEncounter encounter)
         {
-            return EncounterSelector.PickEncounter(p, null);
+            return EncounterSelector.PickEncounter(p, typeof(TreasureRoomEncounter));
         }
     }
 }
