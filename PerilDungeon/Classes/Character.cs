@@ -92,11 +92,10 @@ namespace PerilDungeon.Classes
                 return;
             }
             int recovery = rng.Next(1, Level + 1);
-            recovery += rng.Next(1, 1 + (MaxHealth - Health)) / 10;
+            recovery += rng.Next(1, 1 + (MaxHealth - Health)) / 20;
             Health = Math.Min(MaxHealth, Health + recovery);
 
-            recovery = rng.Next(1, Level + 1);
-            recovery += rng.Next(1, 1 + (MaxMana - Mana)) / 10;
+            recovery = rng.Next(1, 1 + (MaxMana - Mana)) / 10;
             Mana = Math.Min(MaxMana, Mana + recovery);
         }
 

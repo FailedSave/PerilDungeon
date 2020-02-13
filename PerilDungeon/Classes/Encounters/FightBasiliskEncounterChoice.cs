@@ -74,6 +74,5 @@ namespace PerilDungeon.Classes.Encounters
         {
             return EncounterSelector.PickEncounter(p, typeof(ExplorationEncounter));
         }
-
     }
 }

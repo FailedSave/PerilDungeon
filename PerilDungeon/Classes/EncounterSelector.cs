@@ -33,9 +33,10 @@ namespace PerilDungeon.Classes
 
             if (preferredEncounter != null)
             {
-                return (IEncounter)Activator.CreateInstance(preferredEncounter);
+                IEncounter selectedEncounter = (IEncounter)Activator.CreateInstance(preferredEncounter);
+                selectedEncounter.Party = party;
+                return selectedEncounter;
             }
-
 
             Type chosenEncounter = null;
             do
@@ -60,6 +61,10 @@ namespace PerilDungeon.Classes
             table.Add(typeof(TrappedDoorEncounter), 10.0);
             table.Add(typeof(BadAirEncounter), 10.0);
             table.Add(typeof(FountainEncounter), 10.0);
+            if (party.Depth > 2)
+            {
+                table.Add(typeof(GorgonEncounter), 10.0);
+            }
             if (party.Depth > 3)
             {
                 table.Add(typeof(UnweaverEncounter), 20.0);
