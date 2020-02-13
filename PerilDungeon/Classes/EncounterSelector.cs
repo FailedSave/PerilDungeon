@@ -67,6 +67,7 @@ namespace PerilDungeon.Classes
             }
             if (party.Depth >= 4)
             {
+                table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
             }
             return table;

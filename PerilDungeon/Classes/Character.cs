@@ -28,6 +28,7 @@ namespace PerilDungeon.Classes
         public string YouAreOrNameIsLower { get => IsPlayer ? "you are" : Name + " is"; }
         public string YourOrHerLower { get => IsPlayer ? "your" : "her"; }
         public string YouOrHerLower { get => IsPlayer ? "you" : "her"; }
+        public string YouOrShe { get => IsPlayer ? "You" : "She"; }
         public string YouOrSheLower { get => IsPlayer ? "you" : "she"; }
         public string PossessiveLower { get => IsPlayer ? "your" : Name + "'s"; }
 
