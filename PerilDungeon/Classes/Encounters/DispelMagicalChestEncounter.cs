@@ -5,10 +5,10 @@ using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes.Encounters
 {
-    public class CastSpellEncounter : IEncounter
+    public class DispelMagicalChestEncounter : IEncounter
     {
-        public string Title { get => "Casting a Spell"; set { } }
-        public string Description { get => "Who will cast the spell?"; set { } }
+        public string Title { get => "Dispelling the magical lock"; set { } }
+        public string Description { get => "Who will dispel the lock?"; set { } }
         public Party Party { get; set; }
         public IEnumerable<IEncounterChoice> Choices
         {
@@ -17,9 +17,9 @@ namespace PerilDungeon.Classes.Encounters
                 List<IEncounterChoice> choices = new List<IEncounterChoice>();
                 foreach (Character c in Party.PartyMembers)
                 {
-                    choices.Add(new CharacterCastSpellEncounterChoice(c));
+                    choices.Add(new DispelMagicalChestEncounterChoice(c));
                 }
-                choices.Add(new MessageOnlyEncounterChoice("Never mind", "You decide not to cast a spell after all."));
+
                 return choices;
             }
             set { }

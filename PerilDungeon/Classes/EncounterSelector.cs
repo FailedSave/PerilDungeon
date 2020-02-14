@@ -56,7 +56,7 @@ namespace PerilDungeon.Classes
         private static Dictionary<Type, double> generateEncounterTable(Party party)
         {
             var table = new Dictionary<Type, double>();
-            table.Add(typeof(StairsEncounter), 10.0);
+            table.Add(typeof(StairsEncounter), 20.0);
             table.Add(typeof(BasiliskEncounter), 10.0);
             table.Add(typeof(TrappedDoorEncounter), 10.0);
             table.Add(typeof(BadAirEncounter), 10.0);
@@ -64,12 +64,19 @@ namespace PerilDungeon.Classes
             if (party.Depth >= 2)
             {
                 table.Add(typeof(GorgonEncounter), 10.0);
+                table.Add(typeof(MagicalChestEncounter), 10.0);
+                table.Add(typeof(PoliteVampireEncounter), 10.0);
             }
             if (party.Depth >= 4)
             {
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
             }
+
+            //This minor encounter should be more common higher up
+            double looseChangeEncounterchance = Math.Max(15.0 - 3 * party.Depth, 2.0);
+            table.Add(typeof(LooseChangeEncounter), looseChangeEncounterchance);
+
             return table;
         }
 

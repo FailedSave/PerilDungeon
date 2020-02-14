@@ -49,6 +49,7 @@ namespace PerilDungeon.Data
             johanna.Combat = 15;
             johanna.Thievery = 5;
             johanna.BodyItem = new ClothesEquipment();
+            johanna.Spells.Add(new RestorationSpell());
             Character cylenae = new Character("Cylenae");
             cylenae.Health = 50;
             cylenae.MaxHealth = 50;
