@@ -18,6 +18,7 @@ namespace PerilDungeon.Classes
             CanAct = true;
             IsPlayer = false;
             Level = 1;
+            Spells = new List<ISpell>();
             XP = 0;
         }
 
@@ -50,6 +51,8 @@ namespace PerilDungeon.Classes
         public IEquipment MainItem { get; set; }
         public IEquipment BodyItem { get; set; }
 
+        public List<ISpell> Spells { get; set; }
+
         public string Image
         {
             get
@@ -72,6 +75,12 @@ namespace PerilDungeon.Classes
         public void AddStatus(string newStatus)
         {
             Statuses.Add(newStatus);
+            updateCanAct();
+        }
+
+        public void RemoveStatus(string statusToRemove)
+        {
+            Statuses.Remove(statusToRemove);
             updateCanAct();
         }
 

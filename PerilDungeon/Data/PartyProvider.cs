@@ -40,6 +40,7 @@ namespace PerilDungeon.Data
             lorraine.Combat = 10;
             lorraine.Thievery = 15;
             lorraine.BodyItem = new ClothesEquipment();
+            lorraine.Spells.Add(new RestorationSpell());
             Character johanna = new Character("Johanna");
             johanna.Health = 120;
             johanna.MaxHealth = 120;
@@ -56,6 +57,7 @@ namespace PerilDungeon.Data
             cylenae.Combat = 5;
             cylenae.Thievery = 10;
             cylenae.BodyItem = new ClothesEquipment();
+            cylenae.Spells.Add(new RestorationSpell());
             party.PartyMembers.Add(lorraine);
             party.PartyMembers.Add(johanna);
             party.PartyMembers.Add(cylenae);
