@@ -34,12 +34,12 @@ namespace PerilDungeon.Classes.Encounters
                     else if (outcome < .4)
                     {
                         messages.Add($"The fountain's water invigorates {Character.PossessiveLower} tired body.");
-                        Character.GainHealth(EncounterSelector.rng.Next(10, 25) + party.Depth * 2);
+                        Character.GainHealth(15 + EncounterSelector.rng.Next(10, 25) + party.Depth * 2);
                     }
-                    else if (outcome < .7)
+                    else if (outcome < .75)
                     {
                         messages.Add($"The fountain's water energizes {Character.PossessiveLower} weary mind.");
-                        Character.GainMana(EncounterSelector.rng.Next(5, 20) + party.Depth * 2);
+                        Character.GainMana(15 + EncounterSelector.rng.Next(5, 20) + party.Depth * 2);
                     }
                     else if (outcome < .95)
                     {
