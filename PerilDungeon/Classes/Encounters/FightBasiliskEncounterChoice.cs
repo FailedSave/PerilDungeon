@@ -36,7 +36,7 @@ namespace PerilDungeon.Classes.Encounters
                             Character.LoseHealth(20 + party.Depth * 5 + EncounterSelector.rng.Next(1, 5));
                             messages.Add($"The basilisk gets the better of {Character.YouOrNameLower} in the fight. {Character.YouOrName} {(Character.IsPlayer ? "manage" : "manages")} to defeat it only after suffering several bites.");
                         }
-                        if (EncounterSelector.rng.NextDouble() < .66) //and a 2/3 chance of transformative consequences
+                        else if (EncounterSelector.rng.NextDouble() < .66) //and a 2/3 chance of transformative consequences
                         {
                             if (Character.HealthRatio < EncounterSelector.rng.NextDouble() - 0.2)
                             {
@@ -59,6 +59,10 @@ namespace PerilDungeon.Classes.Encounters
                                 Character.LoseHealth(15);
                                 messages.Add($"{Character.YouOrName} {(Character.IsPlayer ? "meet" : "meets")} the basilisk's gaze, but manages to avert {Character.YourOrHerLower} eyes before it's too late.");
                             }
+                        }
+                        else
+                        {
+                            messages.Add($"{Character.YouOrName} {(Character.IsPlayer ? "fight" : "fights")} clumsily, but still manage to defeat the small lizard without injury or meeting its dangerous gaze.");
                         }
 
                     }

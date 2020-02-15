@@ -61,20 +61,32 @@ namespace PerilDungeon.Classes
             table.Add(typeof(TrappedDoorEncounter), 10.0);
             table.Add(typeof(BadAirEncounter), 10.0);
             table.Add(typeof(FountainEncounter), 10.0);
+
             if (party.Depth >= 2)
             {
                 table.Add(typeof(GorgonEncounter), 10.0);
                 table.Add(typeof(MagicalChestEncounter), 10.0);
                 table.Add(typeof(PoliteVampireEncounter), 10.0);
+                table.Add(typeof(RestorationAltarEncounter), 1.0 + (double)party.Depth / 2); //more common as you go deeper (but always rare)
+            }
+            if (party.Depth >= 3)
+            {
+                table.Add(typeof(WyrdRunesEncounter), 10.0);
             }
             if (party.Depth >= 4)
             {
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
+                table.Add(typeof(FloatingEyeEncounter), 10.0);
+            }
+            if (party.Depth >= 6)
+            {
+                table.Add(typeof(BetrayalAltarEncounter), 5.0);
             }
             if (party.Depth >= 7)
             {
                 table.Add(typeof(BadAirDeepEncounter), 10.0);
+                table.Add(typeof(MadSculptorEncounter), 10.0);
             }
 
             //This minor encounter should be more common higher up
