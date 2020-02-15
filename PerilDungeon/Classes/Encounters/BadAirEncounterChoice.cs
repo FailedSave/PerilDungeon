@@ -8,7 +8,16 @@ namespace PerilDungeon.Classes.Encounters
 {
     public class BadAirEncounterChoice : IEncounterChoice
     {
-        public string Text { get => "Oh no!"; set { } }
+        public BadAirEncounterChoice()
+        {
+            Text = "Oh no!";
+        }
+        public BadAirEncounterChoice(string text)
+        {
+            Text = text;
+        }
+
+        public string Text { get; set; }
         public Func<Party, IEnumerable<string>> Choose
         {
             get

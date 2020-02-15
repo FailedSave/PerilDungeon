@@ -5,18 +5,16 @@ using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes.Encounters
 {
-    public class AcceptVampireEncounterChoice : IEncounterChoice
+    public class AcceptSculptorEncounterChoice : IEncounterChoice
     {
-        public AcceptVampireEncounterChoice(Character character)
+        public AcceptSculptorEncounterChoice(Character character)
         {
-            BloodAmount = 20 + 5 * character.Level;
             Character = character;
             Text = $"Accept ({Character.YouOrName})";
-            IsAvailable = Character.CanAct && Character.Health >= BloodAmount;
+            IsAvailable = Character.CanAct;
         }
         public Character Character;
 
-        private int BloodAmount;
 
         public string Text { get; set; }
         public Func<Party, IEnumerable<string>> Choose
@@ -26,11 +24,11 @@ namespace PerilDungeon.Classes.Encounters
                 List<string> messages = new List<string>();
                 return (Party party) =>
                 {
-                    party.Money += BloodAmount * 2;
-                    Character.LoseHealth(BloodAmount);
-                    Character.GainMana(BloodAmount / 10);
+                    party.Money += party.Depth * EncounterSelector.rng.Next(30, 40) + EncounterSelector.rng.Next(1, 5);
                     Character.AwardXP(10, party.Depth);
-                    messages.Add($"The vampire smiles gratefully, then bares her fangs and takes a long drink from {Character.PossessiveLower} offered wrist. When she's finished, she licks the wound clean and hands over a bag of coins as promised. {Character.YouAreOrNameIs} drained by the experience, but it's surpisingly pleasant.");
+                    Character.AddStatus("Petrified");
+                    Character.DestroyBodyItem();
+                    messages.Add($"The old man smiles happily and procures a large sack of coins, which you add to the party supplies. He then smiles and points to an empty pedestal. Obediently, {Character.YouOrNameLower} {(Character.IsPlayer ? "strip" : "strips")} naked and steps up onto it. The old man casts a spell with the air of someone who's practiced many times. In a matter of seconds, {(Character.IsPlayer ? "you become" : "she becomes")} just another of the many nude statues in his gallery.");
                     return messages;
                 };
             }

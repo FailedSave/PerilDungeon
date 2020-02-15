@@ -31,6 +31,7 @@ namespace PerilDungeon.Classes
         public string YouOrHerLower { get => IsPlayer ? "you" : "her"; }
         public string YouOrShe { get => IsPlayer ? "You" : "She"; }
         public string YouOrSheLower { get => IsPlayer ? "you" : "she"; }
+        public string Possessive { get => IsPlayer ? "Your" : Name + "'s"; }
         public string PossessiveLower { get => IsPlayer ? "your" : Name + "'s"; }
 
         public Dictionary<string, int> Stats { get; set; }
@@ -103,9 +104,13 @@ namespace PerilDungeon.Classes
             }
             int recovery = rng.Next(1, Level + 1);
             recovery += rng.Next(1, 1 + (MaxHealth - Health)) / 20;
+            if (BodyItem == null)
+            {
+                recovery -= 2; //chilly if you're naked
+            }
             Health = Math.Min(MaxHealth, Health + recovery);
 
-            recovery = rng.Next(1, 1 + (MaxMana - Mana)) / 10;
+            recovery = 1 + rng.Next(1, 1 + (MaxMana - Mana)) / 10;
             Mana = Math.Min(MaxMana, Mana + recovery);
         }
 
