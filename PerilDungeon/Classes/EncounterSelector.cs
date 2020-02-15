@@ -72,6 +72,10 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
             }
+            if (party.Depth >= 7)
+            {
+                table.Add(typeof(BadAirDeepEncounter), 10.0);
+            }
 
             //This minor encounter should be more common higher up
             double looseChangeEncounterchance = Math.Max(15.0 - 3 * party.Depth, 2.0);
