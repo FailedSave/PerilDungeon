@@ -22,4 +22,4 @@ namespace PerilDungeon.Classes.Encounters
         }
     }
 }
-}
+
