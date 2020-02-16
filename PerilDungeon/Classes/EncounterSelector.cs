@@ -64,6 +64,7 @@ namespace PerilDungeon.Classes
 
             if (party.Depth >= 2)
             {
+                table.Add(typeof(MerchantMinorHealingEncounter), 5.0);
                 table.Add(typeof(GorgonEncounter), 10.0);
                 table.Add(typeof(MagicalChestEncounter), 10.0);
                 table.Add(typeof(PoliteVampireEncounter), 10.0);
@@ -72,12 +73,19 @@ namespace PerilDungeon.Classes
             if (party.Depth >= 3)
             {
                 table.Add(typeof(WyrdRunesEncounter), 10.0);
+                table.Add(typeof(MerchantManaEncounter), 5.0);
+                table.Add(typeof(MerchantCombatEncounter), 5.0);
+                table.Add(typeof(MerchantThieveryEncounter), 5.0);
             }
             if (party.Depth >= 4)
             {
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
                 table.Add(typeof(FloatingEyeEncounter), 10.0);
+            }
+            if (party.Depth >= 5)
+            {
+                table.Add(typeof(MerchantMajorHealingEncounter), 5.0);
             }
             if (party.Depth >= 6)
             {
