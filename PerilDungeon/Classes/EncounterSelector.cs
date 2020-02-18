@@ -56,7 +56,12 @@ namespace PerilDungeon.Classes
         private static Dictionary<Type, double> generateEncounterTable(Party party)
         {
             var table = new Dictionary<Type, double>();
-            table.Add(typeof(StairsEncounter), 20.0);
+            double stairsChance = 20.0;
+            if (party.MainQuestProgress >= MainQuestProgress.GotShard) //Much easier to find your way out when you have the shard!
+            {
+                stairsChance += 60.0;
+            }
+
             table.Add(typeof(BasiliskEncounter), 10.0);
             table.Add(typeof(TrappedDoorEncounter), 10.0);
             table.Add(typeof(BadAirEncounter), 10.0);
@@ -82,6 +87,7 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
                 table.Add(typeof(FloatingEyeEncounter), 10.0);
+                stairsChance += 10.0;
             }
             if (party.Depth >= 5)
             {
@@ -95,7 +101,17 @@ namespace PerilDungeon.Classes
             {
                 table.Add(typeof(BadAirDeepEncounter), 10.0);
                 table.Add(typeof(MadSculptorEncounter), 10.0);
+                if (party.MainQuestProgress < MainQuestProgress.GotBook) //This encounter only spawns deep, but gets more common as you go deeper
+                {
+                    table.Add(typeof(MercenaryPriestEncounter), 10.0 + (party.Depth - 7) * 5.0);
+                }
+                if (party.MainQuestProgress < MainQuestProgress.GotShard)
+                {
+                    table.Add(typeof(SunstoneShardEncounter), 2.0 + (party.Depth - 7) * 8.0);
+                }
             }
+            table.Add(typeof(StairsEncounter), stairsChance);
+
 
             //This minor encounter should be more common higher up
             double looseChangeEncounterchance = Math.Max(15.0 - 3 * party.Depth, 2.0);

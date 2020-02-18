@@ -40,6 +40,15 @@
             EncounterProvider.CallRequestRefresh();
             return;
         }
+        if (party.MainQuestProgress == MainQuestProgress.Victory)
+        {
+            party.MainQuestProgress = MainQuestProgress.Beginning;
+            NavManager.NavigateTo("victory");
+            EncounterProvider.NextEncounter = new FirstEncounter();
+            encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
+            EncounterProvider.CallRequestRefresh();
+
+        }
         EncounterProvider.NextEncounter = e.GetNextEncounter(party, encounter);
         encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
         EncounterProvider.CallRequestRefresh();

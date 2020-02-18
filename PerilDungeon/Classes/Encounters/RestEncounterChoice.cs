@@ -14,9 +14,10 @@ namespace PerilDungeon.Classes.Encounters
             {
                 return (Party party) =>
                 {
-                    party.TimeRemaining -= 10;
+                    party.TimeRemaining -= 15;
                     foreach(Character c in party.PartyMembers)
                     {
+                        c.Rest();
                         c.Rest();
                     }
                     List<string> messages = new List<string>();

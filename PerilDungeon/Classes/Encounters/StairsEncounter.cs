@@ -18,7 +18,14 @@ namespace PerilDungeon.Classes.Encounters
             get
             {
                 List<IEncounterChoice> choices = new List<IEncounterChoice>();
-                choices.Add(new StairsEncounterChoice("Ascend", StairsDirection.Ascend, Party.Depth != 1));
+                if (Party.Depth == 1)
+                {
+                    choices.Add(new EscapeEncounterChoice(Party));
+                }
+                else
+                {
+                    choices.Add(new StairsEncounterChoice("Ascend", StairsDirection.Ascend, true));
+                }
                 choices.Add(new StairsEncounterChoice("Descend", StairsDirection.Descend, true));
                 choices.Add(new StairsEncounterChoice("Ignore the Stairs", StairsDirection.Ignore, true));
                 return choices;
