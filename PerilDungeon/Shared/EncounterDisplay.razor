@@ -47,7 +47,7 @@
             EncounterProvider.NextEncounter = new FirstEncounter();
             encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?
             EncounterProvider.CallRequestRefresh();
-
+            return;
         }
         EncounterProvider.NextEncounter = e.GetNextEncounter(party, encounter);
         encounter = EncounterProvider.NextEncounter; //apparently this is the main loop?

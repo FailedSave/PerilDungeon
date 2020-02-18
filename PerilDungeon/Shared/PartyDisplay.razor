@@ -7,7 +7,8 @@
 }
 Depth: @Party.Depth
 Money: $@Party.Money <br />
-Time Remaining: @Party.TimeRemaining
+Time Remaining: @Party.TimeRemaining <br />
+Quest Status: <span style="color: @ColorFromQuestStatus">@QuestStatusText</span>
 @foreach (var character in Party.PartyMembers)
 {
     <CharacterDisplay Character="character" />
@@ -21,6 +22,45 @@ Time Remaining: @Party.TimeRemaining
         PartyProvider.RefreshRequested += RefreshMe;
     }
 
+    private string QuestStatusText
+    {
+        get
+        {
+            switch (Party.MainQuestProgress)
+            {
+                case MainQuestProgress.Beginning:
+                    return "Exploring";
+                case MainQuestProgress.GotBook:
+                    return "Got Kylanian Apocrypha";
+                case MainQuestProgress.GotShard:
+                    return "Got Sunstone Shard";
+                case MainQuestProgress.Victory:
+                    return "Victory!";
+                default:
+                    return "Unknown";
+            }
+        }
+    }
+
+    private string ColorFromQuestStatus
+    {
+        get
+        {
+            switch (Party.MainQuestProgress)
+            {
+                case MainQuestProgress.Beginning:
+                    return "#f7f7f7";
+                case MainQuestProgress.GotBook:
+                    return "#cc9900";
+                case MainQuestProgress.GotShard:
+                    return "#ffff66";
+                case MainQuestProgress.Victory:
+                    return "#ffff66";
+                default:
+                    return "#ffffff";
+            }
+        }
+    }
 
     private void RefreshMe()
     {
