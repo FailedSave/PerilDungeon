@@ -106,7 +106,7 @@ namespace PerilDungeon.Classes
             recovery += rng.Next(1, 1 + (MaxHealth - Health)) / 20;
             if (BodyItem == null)
             {
-                recovery -= 2; //chilly if you're naked
+                recovery -= 1; //chilly if you're naked
             }
             Health = Math.Min(MaxHealth, Health + recovery);
 

@@ -14,15 +14,17 @@ namespace PerilDungeon.Classes
         public int Depth;
         public int Money;
         public bool GameOver;
+        public MainQuestProgress MainQuestProgress;
 
         public Party()
         {
             PartyMembers = new List<Character>();
             rng = new Random();
-            TimeRemaining = 1000;
+            TimeRemaining = 1500;
             Depth = 1;
             Money = 0;
             GameOver = false;
+            MainQuestProgress = MainQuestProgress.Beginning;
         }
 
         public Character GetRandomCharacter()
@@ -53,5 +55,13 @@ namespace PerilDungeon.Classes
                 return false;
             }
         }
+    }
+
+    public enum MainQuestProgress
+    {
+        Beginning,
+        GotBook,
+        GotShard,
+        Victory
     }
 }
