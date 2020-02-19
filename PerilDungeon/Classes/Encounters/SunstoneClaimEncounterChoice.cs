@@ -9,7 +9,7 @@ namespace PerilDungeon.Classes.Encounters
     {
         public SunstoneClaimEncounterChoice()
         {
-            Text = $"Take a Sunstone";
+            Text = $"Take a Suncrystal";
             IsAvailable = true;
         }
 
