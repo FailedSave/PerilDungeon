@@ -27,7 +27,7 @@ namespace PerilDungeon.Classes.Encounters
                     party.Money -= Cost;
                     party.MainQuestProgress = MainQuestProgress.GotBook;
 
-                    messages.Add("Sighing, you exchange a heavy sack of coins and gems for a small, worn book. The book, written by a centuries-old saint, descibes specific prayers that must be recited while claiming a Sunstone shard to pick it up without incurring Kylan's wrath. You keep it with you so you'll be able to remember it when the time comes.");
+                    messages.Add("Sighing, you exchange a heavy sack of coins and gems for a small, worn book. The book, written by a centuries-old saint, descibes specific prayers that must be recited while claiming a Suncrystal shard to pick it up without incurring Kylan's wrath. You keep it with you so you'll be able to remember it when the time comes.");
                     return messages;
                 };
             }

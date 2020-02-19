@@ -27,11 +27,11 @@ namespace PerilDungeon.Classes.Encounters
                         party.MainQuestProgress = MainQuestProgress.GotShard;
                         if (target.IsPlayer)
                         {
-                            messages.Add($"You lower your voice, and in a reverent whisper, begin reciting the prayer written in the Kylanian Apocrypha. As you touch the Sunstone crystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in your hand. A warm light suffuses the room, invigorating your party. Now to escape!");
+                            messages.Add($"You lower your voice, and in a reverent whisper, begin reciting the prayer written in the Kylanian Apocrypha. As you touch the Suncrystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in your hand. A warm light suffuses the room, invigorating your party. Now to escape!");
                         }
                         else
                         {
-                            messages.Add($"{target.Name} lowers her voice, and in a reverent whisper, begins reciting the prayer written in the Kylanian Apocrypha. As she touches the Sunstone crystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in her hand. A warm light suffuses the room, invigorating your party. Now to escape!");
+                            messages.Add($"{target.Name} lowers her voice, and in a reverent whisper, begins reciting the prayer written in the Kylanian Apocrypha. As she touches the Suncrystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in her hand. A warm light suffuses the room, invigorating your party. Now to escape!");
                         }
                         foreach (Character c in party.PartyMembers)
                         {

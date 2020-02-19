@@ -23,7 +23,7 @@ namespace PerilDungeon.Classes.Encounters
 
                 return (Party party) =>
                 {
-                    messages.Add("Brandishing the Sunstone shard proudly, you fling open the dungeon door and step outside.");
+                    messages.Add("Brandishing the Suncrystal shard proudly, you fling open the dungeon door and step outside.");
                     foreach (Character c in party.PartyMembers)
                     {
                         c.RemoveStatus("Petrified");

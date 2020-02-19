@@ -8,7 +8,7 @@ namespace PerilDungeon.Classes.Encounters
     public class FirstEncounter : IEncounter
     {
         public string Title { get => "Into the Delve"; set { } }
-        public string Description { get => "Heavy wooden doors close behind you, and guards take their place to ensure that you don't escape. You have until sunset 3 days from now to return with a Sunstone shard, or you will be left to certain doom."; set { } }
+        public string Description { get => "Heavy wooden doors close behind you, and guards take their place to ensure that you don't escape. You have until sunset 3 days from now to return with a Suncrystal shard, or you will be left to certain doom."; set { } }
         public Party Party { get; set; }
         public IEnumerable<IEncounterChoice> Choices
         {

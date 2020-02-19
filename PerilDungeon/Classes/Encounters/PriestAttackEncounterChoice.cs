@@ -33,7 +33,7 @@ namespace PerilDungeon.Classes.Encounters
                             c.LoseHealth(40 + EncounterSelector.rng.Next(10));
                         }
                         messages.Add("Working together, your party attacks the priest. He fights ferociously with divine power, but with your combat experience and superior numbers, you manage to get the best of him. As he dies, he moans the words \"I... was... unworthy...\"");
-                        messages.Add("You claim the small, worn book. Written by a centuries-old saint, it descibes specific prayers that must be recited while claiming a Sunstone shard to pick it up without incurring Kylan's wrath. You keep it with you so you'll be able to remember it when the time comes.");
+                        messages.Add("You claim the small, worn book. Written by a centuries-old saint, it descibes specific prayers that must be recited while claiming a Suncrystal shard to pick it up without incurring Kylan's wrath. You keep it with you so you'll be able to remember it when the time comes.");
 
                         party.MainQuestProgress = MainQuestProgress.GotBook;
                     }
