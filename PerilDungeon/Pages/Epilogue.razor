@@ -3,10 +3,10 @@
 @inject IPartyProvider PartyProvider
 
 <h1>Epilogue</h1>
-<img src="@SplashImage" width="800" />
+<img src="@SplashImage" width="1200" />
 <p>A few months pass. One week, your acquaintances start losing touch with you and your friends. Brief letters at first, then silence. Scraps of evidence slowly turn up that you have decided to take your wealth and live abroad, leaving your old lives in the shadow of the <strong>Temple of Kylan</strong> behind.</p>
 <p>Amongst the renegades and freethinkers in the resistance, other rumors swirl. Some say that the Kylanian hierarchs found being proven wrong <strong>intolerable</strong>, and took matters into their own hands. The Temple vigorously denies this, of course.</p>
-<p>In another month or two, the Temple unveils a new monument: a sculpture of the three heroes who survived the <strong>Ordeal of Kylan</strong>, the first in a generation to do so! Although the heroes themselves aren't available to witness the monument, all are inspired by their <strong>perseverance and piety</strong>, and the all-encompassing <strong>wisdom and judgment of Kylan.</strong></p>
+<p>In another month or two, the Temple unveils a new monument in a sacred garden: a sculpture of the three heroes who survived the <strong>Ordeal of Kylan</strong>, the first in a generation to do so! Although the heroes themselves aren't available to witness the dedication of the monument, all are inspired by their <strong>perseverance and piety</strong>, and the all-encompassing <strong>wisdom and judgment of Kylan.</strong></p>
 <p>Thank you for playing!</p>
 
 <h6><a @onclick="()=>ResetParty()" href="game">Restart</a></h6>
@@ -17,7 +17,7 @@
     {
         get
         {
-            System.Text.StringBuilder sb = new System.Text.StringBuilder("assets/splash-gameover.png");
+            System.Text.StringBuilder sb = new System.Text.StringBuilder("assets/splash-epilogue.png");
             return sb.ToString();
         }
     }
