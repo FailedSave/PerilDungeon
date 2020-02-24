@@ -46,7 +46,7 @@
             }
             else
             {
-                return string.Join(",", Character.Statuses);
+                return string.Join(",", Character.Statuses.OrderBy(x => x).ToList());
             }
         }
     }

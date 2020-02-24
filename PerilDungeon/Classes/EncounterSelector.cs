@@ -73,6 +73,7 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(GorgonEncounter), 10.0);
                 table.Add(typeof(MagicalChestEncounter), 10.0);
                 table.Add(typeof(PoliteVampireEncounter), 10.0);
+                table.Add(typeof(CockatriceEncounter), 10.0);
                 table.Add(typeof(RestorationAltarEncounter), 1.0 + (double)party.Depth / 2); //more common as you go deeper (but always rare)
             }
             if (party.Depth >= 3)
@@ -87,6 +88,7 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
                 table.Add(typeof(FloatingEyeEncounter), 10.0);
+                table.Add(typeof(MerchantClothesEncounter), 5.0);
                 stairsChance += 10.0;
             }
             if (party.Depth >= 5)

@@ -48,6 +48,8 @@ namespace PerilDungeon.Classes
         public int Thievery { get; set; }
         public int Level { get; set; }
         public int XP { get; set; }
+        public Species NativeSpecies { get; set; }
+        public Species Species { get; set; }
 
         public IEquipment MainItem { get; set; }
         public IEquipment BodyItem { get; set; }
@@ -120,6 +122,10 @@ namespace PerilDungeon.Classes
             {
                 return;
             }
+            if (HasStatus("Protected"))
+            {
+                amount = (int)(amount * .75);
+            }
             Health = Math.Max(0, Health - amount);
         }
 
@@ -164,6 +170,10 @@ namespace PerilDungeon.Classes
 
         public void DestroyBodyItem()
         {
+            if (BodyItem != null)
+            {
+                BodyItem.Unequip(this);
+            }
             BodyItem = null;
         }
 
@@ -195,5 +205,12 @@ namespace PerilDungeon.Classes
             Console.WriteLine($"Skill check: {roll} vs. {target}");
             return (roll > target);
         }
+    }
+
+    public enum Species
+    {
+        Human,
+        Faerie,
+        Animal
     }
 }

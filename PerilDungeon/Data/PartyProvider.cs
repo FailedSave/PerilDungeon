@@ -41,6 +41,8 @@ namespace PerilDungeon.Data
             lorraine.Thievery = 15;
             lorraine.BodyItem = new ClothesEquipment();
             lorraine.Spells.Add(new RestorationSpell());
+            lorraine.Species = Species.Human;
+            lorraine.NativeSpecies = Species.Human;
             Character johanna = new Character("Johanna");
             johanna.Health = 120;
             johanna.MaxHealth = 120;
@@ -50,6 +52,8 @@ namespace PerilDungeon.Data
             johanna.Thievery = 5;
             johanna.BodyItem = new ClothesEquipment();
             johanna.Spells.Add(new RestorationSpell());
+            johanna.Species = Species.Human;
+            johanna.NativeSpecies = Species.Human;
             Character cylenae = new Character("Cylenae");
             cylenae.Health = 50;
             cylenae.MaxHealth = 50;
@@ -59,6 +63,8 @@ namespace PerilDungeon.Data
             cylenae.Thievery = 10;
             cylenae.BodyItem = new ClothesEquipment();
             cylenae.Spells.Add(new RestorationSpell());
+            cylenae.Species = Species.Faerie;
+            cylenae.NativeSpecies = Species.Faerie;
             party.PartyMembers.Add(lorraine);
             party.PartyMembers.Add(johanna);
             party.PartyMembers.Add(cylenae);
