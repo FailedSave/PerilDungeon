@@ -11,6 +11,5 @@ namespace PerilDungeon.Classes
         public string Description { get; set; }
         public Party Party { get; set; }
         public IEnumerable<IEncounterChoice> Choices { get; set; }
-
     }
 }

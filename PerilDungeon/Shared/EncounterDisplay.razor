@@ -5,7 +5,13 @@
 @using PerilDungeon.Classes.Encounters
 
 <h4>@encounter.Title</h4>
+
+@if (HasCustomImage)
+{
+    <img src="@CustomImage" width="300"/>
+}
 <p>@encounter.Description</p>
+
 
 @foreach (var choice in encounter.Choices)
 {
@@ -15,6 +21,23 @@
 @code {
     private IEncounter encounter;
     private Party party;
+
+    private bool HasCustomImage
+    {
+        get
+        {
+            return ((encounter != null) && (encounter is ICustomEncounterImage));
+        }
+    }
+
+    private string CustomImage
+    {
+        get
+        {
+            return "assets/" + (encounter as ICustomEncounterImage).ImageName;
+        }
+    }
+
     protected override void OnInitialized()
     {
         party = PartyProvider.Party;
