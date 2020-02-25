@@ -8,15 +8,24 @@
 
 @if (HasCustomImage)
 {
-    <img src="@CustomImage" width="300"/>
+    <img src="@CustomImage" width="300" data-toggle="modal" data-target="#EncounterModal"/>
 }
 <p>@encounter.Description</p>
-
 
 @foreach (var choice in encounter.Choices)
 {
     <button @onclick="()=>HaveEncounter(choice)" class="btn btn-primary" disabled="@DisabledFromChoice(choice)">@choice.Text</button>
 }
+
+<div class="modal fade" id="EncounterModal" tabindex="-2" role="dialog" aria-labelledby="EncounterDialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="color: #f7f7f7; background-color: #222222">
+            <div class="modal-body" style="text-align: center; align-content: center">
+                <img src="@CustomImage"/>
+            </div>
+        </div>
+    </div>
+</div>
 
 @code {
     private IEncounter encounter;
@@ -34,6 +43,10 @@
     {
         get
         {
+            if (!HasCustomImage)
+            {
+                return "";
+            }
             return "assets/" + (encounter as ICustomEncounterImage).ImageName;
         }
     }
