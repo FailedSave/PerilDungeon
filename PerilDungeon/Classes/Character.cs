@@ -20,6 +20,7 @@ namespace PerilDungeon.Classes
             Level = 1;
             Spells = new List<ISpell>();
             XP = 0;
+
         }
 
         public string Name { get; set; }
@@ -33,6 +34,18 @@ namespace PerilDungeon.Classes
         public string YouOrSheLower { get => IsPlayer ? "you" : "she"; }
         public string Possessive { get => IsPlayer ? "Your" : Name + "'s"; }
         public string PossessiveLower { get => IsPlayer ? "your" : Name + "'s"; }
+        public string Verb(string secondPerson, string thirdPerson)
+        {
+            return (IsPlayer ? secondPerson : thirdPerson);
+        }
+        public string YouOrNameVerb(string secondPerson, string thirdPerson)
+        {
+            return (IsPlayer ? "You " + secondPerson : Name + " " + thirdPerson);
+        }
+        public string YouOrNameVerbLower(string secondPerson, string thirdPerson)
+        {
+            return (IsPlayer ? "you " + secondPerson : Name + " " + thirdPerson);
+        }
 
         public Dictionary<string, int> Stats { get; set; }
         public HashSet<string> Statuses { get; set; }
@@ -60,6 +73,11 @@ namespace PerilDungeon.Classes
         {
             get
             {
+                if (PortraitOverride == PortraitOverride.MadSculptor)
+                {
+                    return $"assets/{Name.ToLower()}-portrait-madsculptor.png";
+                }
+
                 StringBuilder sb = new StringBuilder("assets/" + Name.ToLower());
                 if (BodyItem == null)
                 {
@@ -75,6 +93,8 @@ namespace PerilDungeon.Classes
             }
         }
 
+        public PortraitOverride PortraitOverride { get; set; }
+
         public void AddStatus(string newStatus)
         {
             Statuses.Add(newStatus);
@@ -84,6 +104,10 @@ namespace PerilDungeon.Classes
         public void RemoveStatus(string statusToRemove)
         {
             Statuses.Remove(statusToRemove);
+            if (statusToRemove == "Petrified")
+            {
+                PortraitOverride = PortraitOverride.None;
+            }
             updateCanAct();
         }
 
@@ -212,5 +236,11 @@ namespace PerilDungeon.Classes
         Human,
         Faerie,
         Animal
+    }
+
+    public enum PortraitOverride
+    {
+        None,
+        MadSculptor
     }
 }
