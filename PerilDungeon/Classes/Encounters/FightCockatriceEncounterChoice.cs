@@ -35,7 +35,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"Taking to the air, {Character.YouOrNameLower} is able to fight the cockatrices with relative ease. However, she finds herself unexpectedly flanked midair! She's not able to get out without brushing against the cockatrice's petrifying beak. The creatures are easily mopped up, but {Character.YouOrNameLower} barely manages to flutter to the ground before turning to stone.");
                             Character.LoseHealth(5 + EncounterSelector.rng.Next(1, 5));
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
                     }
                     else
@@ -48,7 +48,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"{Character.YouOrName} boldly {(Character.IsPlayer ? "face" : "faces")} the cockatrices with blade in hand. Unfortunately, there are too many, and their ungainly flight and numbers overwhelm {Character.YouOrHerLower}. Although {Character.YouOrSheLower} {(Character.IsPlayer ? "handle" : "handles")} several of them, {Character.YouAreOrNameIsLower} not able to avoid their deadly beaks. By the time the monsters are subdued, {Character.YouAreOrNameIsLower} a stone statue, blade in hand.");
                             Character.LoseHealth(5 + EncounterSelector.rng.Next(1, 5));
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
                     }
 

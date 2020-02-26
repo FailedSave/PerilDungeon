@@ -20,7 +20,7 @@ namespace PerilDungeon.Classes.Encounters
 
                     foreach (Character c in party.PartyMembers)
                     {
-                        c.AddStatus("Petrified");
+                        c.AddStatus(Status.Petrified);
                     }
 
                     return messages;

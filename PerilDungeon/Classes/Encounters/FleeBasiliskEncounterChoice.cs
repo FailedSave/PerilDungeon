@@ -36,7 +36,7 @@ namespace PerilDungeon.Classes.Encounters
                         }
                         else
                         {
-                            target.AddStatus("Petrified");
+                            target.AddStatus(Status.Petrified);
                             messages.Add($"Before you can turn to flee, {target.YouOrNameLower} {(target.IsPlayer ? "meet" : "meets")} the beast's gaze. It scuttles off, leaving {target.YourOrHerLower} a helpless statue.");
                         }
                     }

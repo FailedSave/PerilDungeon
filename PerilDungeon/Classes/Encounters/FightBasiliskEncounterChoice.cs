@@ -40,7 +40,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             if (Character.HealthRatio < EncounterSelector.rng.NextDouble() - 0.2)
                             {
-                                Character.AddStatus("Petrified");
+                                Character.AddStatus(Status.Petrified);
                                 if (Character.Name == "Lorraine")
                                 {
                                     messages.Add("You stab the basilisk, piercing its belly, and it hisses in pain. You dodge away to strike again, but as you do, you make eye contact with the wounded beast. You throw up your arms instinctively, but it doesn't help; the lizard's magic quickly turns you into a statue.");

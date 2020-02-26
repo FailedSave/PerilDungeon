@@ -27,7 +27,7 @@ namespace PerilDungeon.Classes.Encounters
                     {
                         Character target = party.GetRandomActiveCharacter();
                         target.AwardXP(10, party.Depth);
-                        target.AddStatus("Petrified");
+                        target.AddStatus(Status.Petrified);
                         messages.Add($"Although you all flee quickly, {target.YouOrNameLower} {(target.IsPlayer ? "stumble" : "stumbles")} on an unseen obstacle as you escape. The creatures manage to catch up and quickly petrify {target.YouOrName} with their deadly beaks, leaving {target.YourOrHerLower} a helpless statue.");
                     }
 

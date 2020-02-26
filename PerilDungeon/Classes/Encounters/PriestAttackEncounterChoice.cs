@@ -47,7 +47,7 @@ namespace PerilDungeon.Classes.Encounters
                         }
                         else
                         {
-                            target.AddStatus("Petrified");
+                            target.AddStatus(Status.Petrified);
                             messages.Add($"Your party prepares to attack the priest, but with a dismissive wave of his hand, he utters a short prayer to Kylan, and in an instant {target.YouAreOrNameIsLower} transformed into stone. Your planned attack broken, he smirks as he leaves, having demonstrated he is more than a match for you.");
                         }
                     }

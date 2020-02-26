@@ -35,11 +35,11 @@ namespace PerilDungeon.Classes.Encounters
                     {
                         List<string> messages = new List<string>();
                         Character target = party.GetRandomCharacter();
-                        if (target.HasStatus("Petrified"))
+                        if (target.HasStatus(Status.Petrified))
                         {
                             return messages;
                         }
-                        target.AddStatus("Petrified");
+                        target.AddStatus(Status.Petrified);
                         if (target.IsPlayer)
                         {
                             messages.Add("You are now a statue.");

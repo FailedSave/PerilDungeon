@@ -49,7 +49,7 @@ namespace PerilDungeon.Classes.Encounters
                             {
                                 messages.Add($"{Character.Name} yelps briefly, but is quickly silenced as the petrifying poison courses through her body, transforming her to stone where she stands.");
                             }
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
                         else
                         {
