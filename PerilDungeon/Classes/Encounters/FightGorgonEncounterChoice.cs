@@ -52,7 +52,7 @@ namespace PerilDungeon.Classes.Encounters
                             {
                                 messages.Add($"{Character.Name} fights valiantly, but blindfolded, she is no match for the gorgon. The creature defeats your friend and knocks her to the ground while your companions wait helplessly in the shadows. The gorgon pries {Character.PossessiveLower} eyes open and forces her to meet her gaze, quickly reducing her to a stone statue. She chuckles and leaves trimphantly.");
                             }
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
 
                     }

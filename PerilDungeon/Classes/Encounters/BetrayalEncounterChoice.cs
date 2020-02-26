@@ -36,7 +36,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             continue;
                         }
-                        c.AddStatus("Petrified");
+                        c.AddStatus(Status.Petrified);
                         money += party.Depth * EncounterSelector.rng.Next(20, 30) + EncounterSelector.rng.Next(1, 5);
                         XP += 30;
                         bonusMana += 5;

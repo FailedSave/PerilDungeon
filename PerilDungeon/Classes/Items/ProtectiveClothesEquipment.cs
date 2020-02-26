@@ -15,12 +15,12 @@ namespace PerilDungeon.Classes.Items
 
         public void Equip(Character c)
         {
-            c.AddStatus("Protected");
+            c.AddStatus(Status.Protected);
         }
 
         public void Unequip(Character c)
         {
-            c.RemoveStatus("Protected");
+            c.RemoveStatus(Status.Protected);
         }
     }
 }

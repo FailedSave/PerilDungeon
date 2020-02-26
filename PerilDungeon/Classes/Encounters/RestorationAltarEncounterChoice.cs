@@ -32,7 +32,7 @@ namespace PerilDungeon.Classes.Encounters
                 {
                     if (!Character.CanAct)
                     {
-                        Character.RemoveStatus("Petrified");
+                        Character.RemoveStatus(Status.Petrified);
                         if (Character.IsPlayer)
                         {
                             messages.Add($"Deep within your petrified soul, you feel the restorative touch of the goddess Olanna. She has heard the prayers of your friends, and she returns you to life with her blessing.");

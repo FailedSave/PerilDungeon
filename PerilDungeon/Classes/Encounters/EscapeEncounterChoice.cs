@@ -26,7 +26,7 @@ namespace PerilDungeon.Classes.Encounters
                     messages.Add("Brandishing the Suncrystal shard proudly, you fling open the dungeon door and step outside.");
                     foreach (Character c in party.PartyMembers)
                     {
-                        c.RemoveStatus("Petrified");
+                        c.RemoveStatus(Status.Petrified);
                         c.BodyItem = new Items.ClothesEquipment();
                     }
                     party.MainQuestProgress = MainQuestProgress.Victory;

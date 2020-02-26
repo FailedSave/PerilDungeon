@@ -47,7 +47,7 @@ namespace PerilDungeon.Classes.Encounters
                         Character.AwardXP(15, party.Depth);
                         if (Character.HealthRatio < 0.2 + EncounterSelector.rng.NextDouble())
                         {
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                             messages.Add($"The chest was full of a noxious, petrifying gas. As the boards break open, it spills out and {Character.YouOrNameLower} {(Character.IsPlayer ? "breathe" : "breathes")} it in. The chest is open, but {Character.YouAreOrNameIsLower} a stone statue, frozen opening it.");
                         }
                         else

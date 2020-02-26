@@ -45,7 +45,7 @@ namespace PerilDungeon.Classes.Encounters
                     {
                         messages.Add($"The spring's water is cool and refreshing. However, a few seconds after draining the basin, {Character.YouOrNameLower} {(Character.IsPlayer ? "realize" : "realizes")} somthing is terribly wrong. {Character.YouAreOrNameIs} filled with an overwhelming sense of dread, but it doesn't last long; in a few heartbeats more, {Character.YouAreOrNameIsLower} has been turned to stone by the magic.");
                         Character.GainHealth(EncounterSelector.rng.Next(10, 25) + party.Depth * 2);
-                        Character.AddStatus("Petrified");
+                        Character.AddStatus(Status.Petrified);
                     }
                     else
                     {

@@ -31,7 +31,7 @@ namespace PerilDungeon.Classes.Encounters
                     if (outcome < .4)
                     {
                         messages.Add($"The magical energy streams in without any end, beyond {Character.PossessiveLower} ability to handle it. {Character.Possessive} body glows brighter and brighter as ever-more energy pours in. When the light finally fades, {Character.YouAreOrNameIsLower} just a stone statue.");
-                        Character.AddStatus("Petrified");
+                        Character.AddStatus(Status.Petrified);
                     }
                     else if (outcome < .7)
                     {

@@ -41,7 +41,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"Firing judiciously to conserve {Character.YourOrHerLower} magical strength, {Character.YouOrNameLower} {(Character.IsPlayer ? "unleash" : "unleashes")} precise blasts of deadly magical force at the cockatrices. Although {Character.YouAreOrNameIsLower} accurate, one manages to escape the blasts and fly straight at {Character.PossessiveLower} face. In seconds, {Character.YouAreOrNameIsLower} petrified.");
                             Character.LoseMana(manaRequired / 2);
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
                     }
                     else
@@ -55,7 +55,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"Firing sparingly to conserve {Character.YourOrHerLower} magical strength, {Character.YouOrNameLower} {(Character.IsPlayer ? "unleash" : "unleashes")} precise blasts of deadly magical force at the cockatrices. It's nowhere near enough. Several fly straight at {Character.YouOrNameLower} and attack. In seconds, {Character.YouAreOrNameIsLower} petrified.");
                             Character.LoseMana(1000);
-                            Character.AddStatus("Petrified");
+                            Character.AddStatus(Status.Petrified);
                         }
 
                     }

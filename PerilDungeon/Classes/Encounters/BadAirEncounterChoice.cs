@@ -39,7 +39,7 @@ namespace PerilDungeon.Classes.Encounters
                     target.AwardXP(25, party.Depth);
                     if (target.HealthRatio < 0.3 + EncounterSelector.rng.NextDouble() * .3)
                     {
-                        target.AddStatus("Petrified");
+                        target.AddStatus(Status.Petrified);
                         //target is petrified
                         if (target.Name == "Lorraine")
                         {

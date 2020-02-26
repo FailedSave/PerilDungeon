@@ -14,7 +14,7 @@ namespace PerilDungeon.Classes
             rng = new Random();
             Name = name;
             Stats = new Dictionary<string, int>();
-            Statuses = new HashSet<string>();
+            Statuses = new HashSet<Status>();
             CanAct = true;
             IsPlayer = false;
             Level = 1;
@@ -48,7 +48,7 @@ namespace PerilDungeon.Classes
         }
 
         public Dictionary<string, int> Stats { get; set; }
-        public HashSet<string> Statuses { get; set; }
+        public HashSet<Status> Statuses { get; set; }
         public bool CanAct { get; set; }
 
         public bool IsPlayer { get; set; } //controls whether the player is referred to as "you" in messages
@@ -84,7 +84,7 @@ namespace PerilDungeon.Classes
                     sb.Append("-n");
                 }
 
-                if (Statuses.Contains("Petrified"))
+                if (Statuses.Contains(Status.Petrified))
                 {
                     sb.Append("-stone");
                 }
@@ -95,36 +95,36 @@ namespace PerilDungeon.Classes
 
         public PortraitOverride PortraitOverride { get; set; }
 
-        public void AddStatus(string newStatus)
+        public void AddStatus(Status newStatus)
         {
             Statuses.Add(newStatus);
             updateCanAct();
         }
 
-        public void RemoveStatus(string statusToRemove)
+        public void RemoveStatus(Status statusToRemove)
         {
             Statuses.Remove(statusToRemove);
-            if (statusToRemove == "Petrified")
+            if (statusToRemove == Status.Petrified)
             {
                 PortraitOverride = PortraitOverride.None;
             }
             updateCanAct();
         }
 
-        public bool HasStatus (string status)
+        public bool HasStatus (Status status)
         {
             return Statuses.Contains(status);
         }
 
         private void updateCanAct()
-        {//TODO
-            CanAct = !(HasStatus("Petrified"));
+        {
+            CanAct = !(HasStatus(Status.Petrified));
         }
         
         public void Rest()
         {
             //Can't recover health if you're stone
-            if (HasStatus("Petrified"))
+            if (HasStatus(Status.Petrified))
             {
                 return;
             }
@@ -142,11 +142,11 @@ namespace PerilDungeon.Classes
 
         public void LoseHealth(int amount)
         {
-            if (HasStatus("Petrified"))
+            if (HasStatus(Status.Petrified))
             {
                 return;
             }
-            if (HasStatus("Protected"))
+            if (HasStatus(Status.Protected))
             {
                 amount = (int)(amount * .75);
             }
@@ -155,7 +155,7 @@ namespace PerilDungeon.Classes
 
         public void GainHealth(int amount)
         {
-            if (HasStatus("Petrified"))
+            if (HasStatus(Status.Petrified))
             {
                 return;
             }
@@ -164,7 +164,7 @@ namespace PerilDungeon.Classes
         
         public void LoseMana(int amount)
         {
-            if (HasStatus("Petrified"))
+            if (HasStatus(Status.Petrified))
             {
                 return;
             }
@@ -173,7 +173,7 @@ namespace PerilDungeon.Classes
 
         public void GainMana(int amount)
         {
-            if (HasStatus("Petrified"))
+            if (HasStatus(Status.Petrified))
             {
                 return;
             }
@@ -242,5 +242,13 @@ namespace PerilDungeon.Classes
     {
         None,
         MadSculptor
+    }
+
+    public enum Status
+    {
+        None,
+        Petrified,
+        Polymorphed,
+        Protected
     }
 }

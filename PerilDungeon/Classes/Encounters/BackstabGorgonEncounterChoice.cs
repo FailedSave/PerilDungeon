@@ -41,7 +41,7 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"{Character.Name} sneaks up on the gorgon and prepares to attack, but just as she jumps out, the gorgon turns around and meets {Character.Name} with her deadly gaze. She freeze instantly in place as her flesh begins transforming to stone. In a heartbeat, {Character.Name} is a statue, and no longer a threat to the gorgon.");
                         }
-                        Character.AddStatus("Petrified");
+                        Character.AddStatus(Status.Petrified);
                     }
 
                     return messages;

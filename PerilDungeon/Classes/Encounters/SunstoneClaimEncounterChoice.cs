@@ -31,7 +31,7 @@ namespace PerilDungeon.Classes.Encounters
                         }
                         else
                         {
-                            messages.Add($"{target.Name} lowers her voice, and in a reverent whisper, begins reciting the prayer written in the Kylanian Apocrypha. As she touches the Suncrystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in her hand. A warm light suffuses the room, invigorating your party. Now to escape!");
+                            messages.Add($"{target.Name} lowers her voice, and in a reverent whisper, begins reciting the prayer written in the Kylanian Apocrypha. As she touches the Suncrystal, it glows with an inner yellow light, and a shard detaches from the crystal and comes off freely in her hand. A warm light suffuses the room, invigorating your party. Now to ascend back up to the top floor and escape!");
                         }
                         foreach (Character c in party.PartyMembers)
                         {
@@ -43,7 +43,7 @@ namespace PerilDungeon.Classes.Encounters
                     }
                     else
                     {
-                        target.AddStatus("Petrified");
+                        target.AddStatus(Status.Petrified);
                         if (target.IsPlayer)
                         {
                             messages.Add($"You reach out to the crystal to touch it, but as you do so, you feel an oppressive divine presence; the room seems to darken, the air thickens. You try to draw your hand back, but it's too late. Kylan has turned you into a statue for your impertinence.");
