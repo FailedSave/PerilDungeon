@@ -55,6 +55,16 @@ namespace PerilDungeon.Classes
                 return false;
             }
         }
+
+        public List<Character> GetCharactersWithStatus(Status status)
+        {
+            return PartyMembers.Where(c => c.HasStatus(status)).ToList();
+        }
+
+        public List<Character> GetActiveCharactersWithStatus(Status status)
+        {
+            return PartyMembers.Where(c => c.HasStatus(status) && c.CanAct).ToList();
+        }
     }
 
     public enum MainQuestProgress

@@ -26,7 +26,7 @@ namespace PerilDungeon.Classes.Encounters
                     Character target = null;
                     foreach (Character possibleTarget in party.PartyMembers)
                     {
-                        if (!(possibleTarget.CanAct))
+                        if (possibleTarget.HasStatus(Status.Petrified) || possibleTarget.HasStatus(Status.Polymorphed))
                         {
                             target = possibleTarget;
                             break;

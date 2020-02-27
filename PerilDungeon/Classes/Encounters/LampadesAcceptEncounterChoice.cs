@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace PerilDungeon.Classes.Encounters
 {
-    public class LampadesAcceptEncounterChoice
+    public class LampadesAcceptEncounterChoice : IEncounterChoice
     {
         public LampadesAcceptEncounterChoice()
         {
@@ -30,6 +30,10 @@ namespace PerilDungeon.Classes.Encounters
                         {
                             messages.Add($"The lampades decide that {c.YouAreOrNameIsLower} no fun as a statue, and use their powerful magic to turn {c.YouOrHerLower} back to flesh.");
                             c.RemoveStatus(Status.Petrified);
+                        }
+                        if (c.BodyItem != null && EncounterSelector.rng.NextDouble() < .33)
+                        {
+                            c.DestroyBodyItem();
                         }
                     }
                     party.Money += party.Depth * EncounterSelector.rng.Next(10, 20) + EncounterSelector.rng.Next(1, 5);

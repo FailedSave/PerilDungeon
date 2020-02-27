@@ -88,6 +88,7 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(GelatinousCubeEncounter), 10.0);
                 table.Add(typeof(UnweaverEncounter), 20.0);
                 table.Add(typeof(FloatingEyeEncounter), 10.0);
+                table.Add(typeof(LampadesEncounter), 10.0);
                 table.Add(typeof(MerchantClothesEncounter), 5.0);
                 stairsChance += 10.0;
             }

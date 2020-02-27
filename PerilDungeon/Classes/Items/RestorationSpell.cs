@@ -12,10 +12,18 @@ namespace PerilDungeon.Classes.Items
 
         public IEnumerable<string> Cast(Character caster, Character target)
         {
-            caster.LoseMana(Cost);
-            target.RemoveStatus(Status.Petrified);
             var messages = new List<string>();
-            messages.Add($"{caster.YouOrName} {(caster.IsPlayer ? "summon" : "summons")} energy deep from deep within and {(caster.IsPlayer ? "chant" : "chants")} the restoration spell. A warm, pale green glow suffuses {target.YouOrNameLower}. A minute or so passes while the spell takes effect, and {target.YouAreOrNameIsLower} returned to flesh and blood.");
+            caster.LoseMana(Cost);
+            if (target.HasStatus(Status.Petrified))
+            {
+                target.RemoveStatus(Status.Petrified);
+                messages.Add($"{caster.YouOrName} {(caster.IsPlayer ? "summon" : "summons")} energy deep from deep within and {(caster.IsPlayer ? "chant" : "chants")} the restoration spell. A warm, pale green glow suffuses {target.YouOrNameLower}. A minute or so passes while the spell takes effect, and {target.YouAreOrNameIsLower} returned to flesh and blood.");
+            }
+            else if (target.HasStatus(Status.Polymorphed))
+            {
+                target.RemoveStatus(Status.Polymorphed);
+                messages.Add($"{caster.YouOrName} {(caster.IsPlayer ? "summon" : "summons")} energy deep from deep within and {(caster.IsPlayer ? "chant" : "chants")} the restoration spell. A warm, pale green glow suffuses {target.YouOrNameLower}. A minute or so passes while the spell takes effect, and {target.YouAreOrNameIsLower} returned to {target.YourOrHerLower} {(target.Species == Species.Human ? "human" : "faerie")} form.");
+            }
             return messages;
         }
     }

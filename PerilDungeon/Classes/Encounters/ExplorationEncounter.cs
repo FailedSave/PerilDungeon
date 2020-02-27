@@ -19,7 +19,6 @@ namespace PerilDungeon.Classes.Encounters
                 choices.Add(new RestEncounterChoice());
                 choices.Add(new ExploreEncounterChoice("Explore the Delve", true));
                 choices.Add(new FollowUpEncounterChoice("Cast a spell", "Your party gathers in a tight circle while you prepare your magic.", typeof(CastSpellEncounter)));
-                //choices.Add(new ExploreEncounterChoice("Onward Boldly", false));
                 return choices;
             }
             set { }

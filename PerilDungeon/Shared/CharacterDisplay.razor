@@ -72,7 +72,14 @@
         {
             if (Character.BodyItem == null)
             {
-                return "Nothing!";
+                if (Character.HasStatus(Status.Polymorphed))
+                {
+                    return "Fur";
+                }
+                else
+                {
+                    return "Nothing!";
+                }
             }
             else
             {

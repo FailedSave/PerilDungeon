@@ -83,7 +83,10 @@ namespace PerilDungeon.Classes
                 {
                     sb.Append("-n");
                 }
-
+                if (Statuses.Contains(Status.Polymorphed))
+                {
+                    sb.Append("-poly");
+                }
                 if (Statuses.Contains(Status.Petrified))
                 {
                     sb.Append("-stone");
@@ -95,16 +98,37 @@ namespace PerilDungeon.Classes
 
         public PortraitOverride PortraitOverride { get; set; }
 
+        const int CombatPolymorphPenalty = 10;
+        const int ThieveryPolymorphPenalty = 10;
+        const int ManaPolymorphPenalty = 30;
+        
         public void AddStatus(Status newStatus)
         {
             Statuses.Add(newStatus);
+            if (newStatus == Status.Polymorphed)
+            {
+                Species = Species.Animal;
+                Combat -= CombatPolymorphPenalty;
+                Thievery -= ThieveryPolymorphPenalty;
+                MaxMana -= ManaPolymorphPenalty;
+                Mana = Math.Min(Mana, MaxMana);
+                DestroyBodyItem();
+            }
             updateCanAct();
         }
 
         public void RemoveStatus(Status statusToRemove)
         {
             Statuses.Remove(statusToRemove);
-            if (statusToRemove == Status.Petrified)
+            if (statusToRemove == Status.Polymorphed)
+            {
+                Species = NativeSpecies;
+                Combat += CombatPolymorphPenalty;
+                Thievery += ThieveryPolymorphPenalty;
+                MaxMana += ManaPolymorphPenalty;
+            }
+
+            else if (statusToRemove == Status.Petrified)
             {
                 PortraitOverride = PortraitOverride.None;
             }
