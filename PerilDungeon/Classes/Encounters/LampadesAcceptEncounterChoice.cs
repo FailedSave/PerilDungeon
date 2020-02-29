@@ -25,6 +25,7 @@ namespace PerilDungeon.Classes.Encounters
                             c.AwardXP(15, party.Depth);
                             c.MaxMana += 5 * EncounterSelector.rng.Next(1, 4);
                             c.GainMana(5 * EncounterSelector.rng.Next(2, 5));
+                            c.Rest();
                         }
                         else
                         {
@@ -40,7 +41,7 @@ namespace PerilDungeon.Classes.Encounters
                     party.TimeRemaining = Math.Max(party.TimeRemaining - 50, 0);
 
                     messages.Add("Hesitantly at first, your party joins the lampades in their carousing. Your hesitation drains away as you taste their potent underworld wine, and you fall in with their strange, magical revelries...");
-                    messages.Add("You all wake up considerably later--too much time has passed! And some of your clothes are nowhere to be found! On the bright side, you've all learned a few new magical tricks, and somehow you seemed to have earned a few coins from...tips?");
+                    messages.Add("You all wake up considerably later—too much time has passed! And some of your clothes are nowhere to be found! On the bright side, you've all learned a few new magical tricks, and somehow you seemed to have earned a few coins from...tips?");
                     return messages;
                 };
             }

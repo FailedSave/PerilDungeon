@@ -8,7 +8,7 @@ namespace PerilDungeon.Classes.Encounters
     public class BetrayalAltarEncounter : IEncounter
     {
         public string Title { get => "Altar of Jushalan"; set { } }
-        public string Description { get => "You come across an old, forgotten altar covered in masks. You recognize it as an altar of the outlawed god Jushalan, a malicious deity of tricks and betrayal. Despite its age, you sense Jushalan's presence. The smirking god offers you wealth and power if you are willing to betray your friends. Nervously, you look around--they seem to have been made the same offer."; set { } }
+        public string Description { get => "You come across an old, forgotten altar covered in masks. You recognize it as an altar of the outlawed god Jushalan, a malicious deity of tricks and betrayal. Despite its age, you sense Jushalan's presence. The smirking god offers you wealth and power if you are willing to betray your friends. Nervously, you look around—they seem to have been made the same offer."; set { } }
         public Party Party { get; set; }
         public IEnumerable<IEncounterChoice> Choices
         {

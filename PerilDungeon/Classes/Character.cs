@@ -101,7 +101,12 @@ namespace PerilDungeon.Classes
         const int CombatPolymorphPenalty = 10;
         const int ThieveryPolymorphPenalty = 10;
         const int ManaPolymorphPenalty = 30;
-        
+
+        const int CombatEmpoweredBonus = 10;
+        const int ThieveryEmpoweredBonus = 10;
+        const int ManaEmpoweredBonus = 100;
+
+
         public void AddStatus(Status newStatus)
         {
             Statuses.Add(newStatus);
@@ -114,11 +119,21 @@ namespace PerilDungeon.Classes
                 Mana = Math.Min(Mana, MaxMana);
                 DestroyBodyItem();
             }
+            else if (newStatus == Status.Empowered)
+            {
+                Combat += CombatEmpoweredBonus;
+                Thievery += ThieveryEmpoweredBonus;
+                MaxMana += ManaEmpoweredBonus;
+            }
             updateCanAct();
         }
 
         public void RemoveStatus(Status statusToRemove)
         {
+            if (!HasStatus(statusToRemove))
+            {
+                return;
+            }
             Statuses.Remove(statusToRemove);
             if (statusToRemove == Status.Polymorphed)
             {
@@ -127,10 +142,16 @@ namespace PerilDungeon.Classes
                 Thievery += ThieveryPolymorphPenalty;
                 MaxMana += ManaPolymorphPenalty;
             }
-
+            else if (statusToRemove == Status.Empowered)
+            {
+                Combat -= CombatEmpoweredBonus;
+                Thievery -= ThieveryEmpoweredBonus;
+                MaxMana -= ManaEmpoweredBonus;
+            }
             else if (statusToRemove == Status.Petrified)
             {
                 PortraitOverride = PortraitOverride.None;
+                RemoveStatus(Status.Empowered);
             }
             updateCanAct();
         }
@@ -273,6 +294,7 @@ namespace PerilDungeon.Classes
         None,
         Petrified,
         Polymorphed,
-        Protected
+        Protected,
+        Empowered
     }
 }

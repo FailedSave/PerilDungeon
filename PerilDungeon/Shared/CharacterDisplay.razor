@@ -13,6 +13,10 @@
                 <li>Thievery: @Character.Thievery</li>
                 <li>XP: @Character.XP</li>
                 <li>Level: @Character.Level</li>
+                @if(Character.MainItem != null)
+                {
+                    <li>Wielded: @MainDescription</li>
+                }
                 <li>Worn: @ArmorDescription</li>
             </ul>
         </div>
@@ -63,6 +67,18 @@
             {
                 return Character.Name;
             }
+        }
+    }
+
+    private string MainDescription
+    {
+        get
+        {
+            if (Character.MainItem == null)
+            { 
+                return "Nothing!";
+            }
+            return Character.MainItem.Name;
         }
     }
 
