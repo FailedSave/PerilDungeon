@@ -67,6 +67,11 @@ namespace PerilDungeon.Classes
             table.Add(typeof(BadAirEncounter), 10.0);
             table.Add(typeof(FountainEncounter), 10.0);
 
+            if (party.GetActiveCharactersWithStatus(Status.Empowered).Count > 0)
+            {
+                table.Add(typeof(FavorDueEncounter), 20.0);
+            }
+
             if (party.Depth >= 2)
             {
                 table.Add(typeof(MerchantMinorHealingEncounter), 5.0);
@@ -74,14 +79,16 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(MagicalChestEncounter), 10.0);
                 table.Add(typeof(PoliteVampireEncounter), 10.0);
                 table.Add(typeof(CockatriceEncounter), 10.0);
-                table.Add(typeof(RestorationAltarEncounter), 1.0 + (double)party.Depth / 2); //more common as you go deeper (but always rare)
+                table.Add(typeof(RestorationAltarEncounter), 2.0 + (double)party.Depth / 2); //more common as you go deeper (but always rare)
             }
             if (party.Depth >= 3)
             {
                 table.Add(typeof(WyrdRunesEncounter), 10.0);
+                table.Add(typeof(DjinniEncounter), 10.0);
                 table.Add(typeof(MerchantManaEncounter), 5.0);
                 table.Add(typeof(MerchantCombatEncounter), 5.0);
                 table.Add(typeof(MerchantThieveryEncounter), 5.0);
+                table.Add(typeof(SwordInStoneEncounter), 2.0);
             }
             if (party.Depth >= 4)
             {
@@ -95,6 +102,7 @@ namespace PerilDungeon.Classes
             if (party.Depth >= 5)
             {
                 table.Add(typeof(MerchantMajorHealingEncounter), 5.0);
+                table.Add(typeof(DeckOfWondersEncounter), 10.0);
             }
             if (party.Depth >= 6)
             {

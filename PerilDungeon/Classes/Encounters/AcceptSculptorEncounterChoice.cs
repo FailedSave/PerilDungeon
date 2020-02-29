@@ -11,7 +11,7 @@ namespace PerilDungeon.Classes.Encounters
         {
             Character = character;
             Text = $"Accept ({Character.YouOrName})";
-            IsAvailable = Character.CanAct;
+            IsAvailable = Character.CanAct && !Character.HasStatus(Status.Polymorphed);
         }
         public Character Character;
 

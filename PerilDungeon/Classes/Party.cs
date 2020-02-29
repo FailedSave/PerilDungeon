@@ -65,6 +65,10 @@ namespace PerilDungeon.Classes
         {
             return PartyMembers.Where(c => c.HasStatus(status) && c.CanAct).ToList();
         }
+        public List<Character> GetActiveCharactersWithoutStatus(Status status)
+        {
+            return PartyMembers.Where(c => !c.HasStatus(status) && c.CanAct).ToList();
+        }
     }
 
     public enum MainQuestProgress
