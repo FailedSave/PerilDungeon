@@ -147,6 +147,7 @@ namespace PerilDungeon.Classes
                 Combat -= CombatEmpoweredBonus;
                 Thievery -= ThieveryEmpoweredBonus;
                 MaxMana -= ManaEmpoweredBonus;
+                Mana = Math.Min(Mana, MaxMana);
             }
             else if (statusToRemove == Status.Petrified)
             {
