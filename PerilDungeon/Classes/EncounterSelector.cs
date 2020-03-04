@@ -55,11 +55,17 @@ namespace PerilDungeon.Classes
 
         private static Dictionary<Type, double> generateEncounterTable(Party party)
         {
+            party.EncountersSinceStairs++;
+            party.EncountersSinceDjinn++;
             var table = new Dictionary<Type, double>();
             double stairsChance = 20.0;
             if (party.MainQuestProgress >= MainQuestProgress.GotShard) //Much easier to find your way out when you have the shard!
             {
                 stairsChance += 60.0;
+            }
+            if (party.EncountersSinceStairs > 10)
+            {
+                stairsChance += (party.EncountersSinceStairs - 10) * 10.0;
             }
 
             table.Add(typeof(BasiliskEncounter), 10.0);
@@ -67,7 +73,7 @@ namespace PerilDungeon.Classes
             table.Add(typeof(BadAirEncounter), 10.0);
             table.Add(typeof(FountainEncounter), 10.0);
 
-            if (party.GetActiveCharactersWithStatus(Status.Empowered).Count > 0)
+            if (party.GetActiveCharactersWithStatus(Status.Empowered).Count > 0 && party.EncountersSinceDjinn > 5)
             {
                 table.Add(typeof(FavorDueEncounter), 20.0);
             }
@@ -84,7 +90,10 @@ namespace PerilDungeon.Classes
             if (party.Depth >= 3)
             {
                 table.Add(typeof(WyrdRunesEncounter), 10.0);
-                table.Add(typeof(DjinniEncounter), 10.0);
+                if (party.EncountersSinceDjinn == 0)
+                {
+                    table.Add(typeof(DjinniEncounter), 10.0);
+                }
                 table.Add(typeof(MerchantManaEncounter), 5.0);
                 table.Add(typeof(MerchantCombatEncounter), 5.0);
                 table.Add(typeof(MerchantThieveryEncounter), 5.0);
@@ -122,7 +131,6 @@ namespace PerilDungeon.Classes
                 }
             }
             table.Add(typeof(StairsEncounter), stairsChance);
-
 
             //This minor encounter should be more common higher up
             double looseChangeEncounterchance = Math.Max(15.0 - 3 * party.Depth, 2.0);

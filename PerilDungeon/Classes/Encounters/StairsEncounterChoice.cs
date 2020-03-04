@@ -32,6 +32,7 @@ namespace PerilDungeon.Classes.Encounters
 
                 return (Party party) =>
                 {
+                    party.EncountersSinceStairs = 0;
                     switch (Direction)
                     {
                         case StairsDirection.Ascend:
