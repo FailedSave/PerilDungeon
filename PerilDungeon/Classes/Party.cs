@@ -15,6 +15,8 @@ namespace PerilDungeon.Classes
         public int Money;
         public bool GameOver;
         public MainQuestProgress MainQuestProgress;
+        public int EncountersSinceStairs;
+        public int EncountersSinceDjinn;
 
         public Party()
         {
@@ -25,6 +27,8 @@ namespace PerilDungeon.Classes
             Money = 0;
             GameOver = false;
             MainQuestProgress = MainQuestProgress.Beginning;
+            EncountersSinceStairs = 0;
+            EncountersSinceDjinn = 0;
         }
 
         public Character GetRandomCharacter()

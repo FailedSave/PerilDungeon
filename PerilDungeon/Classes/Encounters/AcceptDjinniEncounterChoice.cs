@@ -23,6 +23,7 @@ namespace PerilDungeon.Classes.Encounters
                 List<string> messages = new List<string>();
                 return (Party party) =>
                 {
+                    party.EncountersSinceDjinn = 0;
                     messages.Add($"{Character.YouOrNameVerb("readily agree", "readily agrees")} to the djinni's offer. The djinni raises her arms and thunder clashes dramatically, and {Character.YouOrNameVerbLower("feel", "feels")} a mighty rush of power. {Character.YouAreOrNameIs} stronger, faster, and brimming with magic. There is also a strange metal armband bound around {Character.PossessiveLower} wrist. \"A reminder of the favor you owe,\" the djinni smirks, before melting back into the ring.");
                     Character.AddStatus(Status.Empowered);
                     return messages;

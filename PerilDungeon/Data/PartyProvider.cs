@@ -69,6 +69,8 @@ namespace PerilDungeon.Data
             party.PartyMembers.Add(johanna);
             party.PartyMembers.Add(cylenae);
             party.GameOver = false;
+            party.EncountersSinceStairs = 0;
+            party.EncountersSinceDjinn = 0;
             party.MainQuestProgress = MainQuestProgress.Beginning;
             return party;
         }
