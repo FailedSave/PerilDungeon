@@ -14,17 +14,36 @@
         get
         {
             System.Text.StringBuilder sb = new System.Text.StringBuilder("assets/splash-gameover");
-            if (PartyProvider.Party.PartyMembers[0].BodyItem == null)
+            if (PartyProvider.Party.PartyMembers.Any(c => c.PortraitOverride == PortraitOverride.MadSculptor))
             {
-                sb.Append("-l");
+                sb.Append("-mad");
+                if (PartyProvider.Party.PartyMembers[0].PortraitOverride == PortraitOverride.MadSculptor)
+                {
+                    sb.Append("-l");
+                }
+                if (PartyProvider.Party.PartyMembers[1].PortraitOverride == PortraitOverride.MadSculptor)
+                {
+                    sb.Append("-j");
+                }
+                if (PartyProvider.Party.PartyMembers[2].PortraitOverride == PortraitOverride.MadSculptor)
+                {
+                    sb.Append("-c");
+                }
             }
-            if (PartyProvider.Party.PartyMembers[1].BodyItem == null)
+            else
             {
-                sb.Append("-j");
-            }
-            if (PartyProvider.Party.PartyMembers[2].BodyItem == null)
-            {
-                sb.Append("-c");
+                if (PartyProvider.Party.PartyMembers[0].BodyItem == null)
+                {
+                    sb.Append("-l");
+                }
+                if (PartyProvider.Party.PartyMembers[1].BodyItem == null)
+                {
+                    sb.Append("-j");
+                }
+                if (PartyProvider.Party.PartyMembers[2].BodyItem == null)
+                {
+                    sb.Append("-c");
+                }
             }
             sb.Append(".png");
             return sb.ToString();
