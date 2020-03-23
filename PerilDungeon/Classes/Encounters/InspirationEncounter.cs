@@ -19,7 +19,7 @@ namespace PerilDungeon.Classes.Encounters
                 else
                 {
                     inspired = Party.GetActiveCharactersWithStatus(Status.Inspired)[0];
-                    return $"As your party pressed on, out of nowhere, a stroke of brilliant inspiration strikes {inspired.YouOrNameLower}! This—right here, right now—would be the perfect place for one of {inspired.YourOrHerLower} companions to be a beautiful, perfectly placed statue to adorn the dungeon!";
+                    return $"As your party presses on, out of nowhere, a stroke of brilliant inspiration strikes {inspired.YouOrNameLower}! This—right here, right now—would be the perfect place for one of {inspired.YourOrHerLower} companions to be a beautiful, perfectly placed statue to adorn the dungeon!";
                 }
             }
             set { }
