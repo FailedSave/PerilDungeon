@@ -59,9 +59,11 @@ namespace PerilDungeon.Classes
             party.EncountersSinceDjinn++;
             var table = new Dictionary<Type, double>();
             double stairsChance = 20.0;
+            double shortcutChance = 5.0;
             if (party.MainQuestProgress >= MainQuestProgress.GotShard) //Much easier to find your way out when you have the shard!
             {
                 stairsChance += 60.0;
+                shortcutChance += 5.0;
             }
             if (party.EncountersSinceStairs > 10)
             {
@@ -75,7 +77,7 @@ namespace PerilDungeon.Classes
 
             if (party.GetActiveCharactersWithStatus(Status.Empowered).Count > 0 && party.EncountersSinceDjinn > 5)
             {
-                table.Add(typeof(FavorDueEncounter), 20.0);
+                table.Add(typeof(FavorDueEncounter), 15.0);
             }
 
             if (party.Depth >= 2)
@@ -98,6 +100,14 @@ namespace PerilDungeon.Classes
                 table.Add(typeof(MerchantCombatEncounter), 5.0);
                 table.Add(typeof(MerchantThieveryEncounter), 5.0);
                 table.Add(typeof(SwordInStoneEncounter), 2.0);
+                if (party.GetActiveCharactersWithStatus(Status.Inspired).Count == 0)
+                {
+                    table.Add(typeof(TomeOfTransmutationEncounter), 10.0);
+                }
+                else
+                {
+                    table.Add(typeof(InspirationEncounter), 15.0);
+                }
             }
             if (party.Depth >= 4)
             {
@@ -131,6 +141,7 @@ namespace PerilDungeon.Classes
                 }
             }
             table.Add(typeof(StairsEncounter), stairsChance);
+            table.Add(typeof(ShortcutEncounter), shortcutChance);
 
             //This minor encounter should be more common higher up
             double looseChangeEncounterchance = Math.Max(15.0 - 3 * party.Depth, 2.0);

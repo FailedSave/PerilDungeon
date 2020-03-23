@@ -13,7 +13,14 @@ namespace PerilDungeon.Classes.Items
         public IEnumerable<string> Cast(Character caster, Character target)
         {
             var messages = new List<string>();
-            caster.LoseMana(Cost);
+            if (caster.HasStatus(Status.Inspired))
+            {
+                caster.LoseMana(Cost / 2);
+            }
+            else
+            {
+                caster.LoseMana(Cost);
+            }
             if (target.HasStatus(Status.Petrified))
             {
                 target.RemoveStatus(Status.Petrified);

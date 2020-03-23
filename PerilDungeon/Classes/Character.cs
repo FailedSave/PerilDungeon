@@ -194,7 +194,7 @@ namespace PerilDungeon.Classes
             }
             if (HasStatus(Status.Protected))
             {
-                amount = (int)(amount * .75);
+                amount = (int)(amount * .7);
             }
             Health = Math.Max(0, Health - amount);
         }
@@ -296,6 +296,7 @@ namespace PerilDungeon.Classes
         Petrified,
         Polymorphed,
         Protected,
-        Empowered
+        Empowered,
+        Inspired
     }
 }
