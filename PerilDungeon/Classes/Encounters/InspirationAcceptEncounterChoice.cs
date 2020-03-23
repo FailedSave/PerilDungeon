@@ -38,6 +38,7 @@ namespace PerilDungeon.Classes.Encounters
                         target.AddStatus(Status.Petrified);
                         Inspired.LoseMana(50);
                         Inspired.MaxMana += 10;
+                        Inspired.AwardXP(25, party.Depth);
                         if (EncounterSelector.rng.NextDouble() < .4)
                         {
                             messages.Add($"{Inspired.YouOrNameVerb("feel", "feels")} as if there are more secrets to discover from the Tome...");
